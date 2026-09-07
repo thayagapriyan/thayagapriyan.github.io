@@ -85,6 +85,15 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
 .links a:hover,.links a:focus-visible{border-color:var(--signal);color:var(--signal);background:var(--raised)}
 .links a.primary{border-color:var(--signal);color:var(--signal)}
 .links a.primary:hover{background:rgba(61,219,217,.09)}
+.grab{
+  font-family:var(--mono);font-size:11px;color:var(--dim);
+  margin:15px 0 0;display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+}
+.grab a{
+  color:var(--muted);text-decoration:none;
+  border-bottom:1px solid var(--line-lit);padding-bottom:1px;transition:color .18s,border-color .18s;
+}
+.grab a:hover,.grab a:focus-visible{color:var(--signal);border-color:var(--signal)}
 
 /* pipeline */
 .pipe{margin:8px 0 0;border:1px solid var(--line);background:var(--panel);padding:26px 22px 20px;overflow-x:auto}
@@ -203,6 +212,11 @@ footer a:hover{color:var(--signal)}
     <a href="mailto:thayagapriyand@gmail.com">Email</a>
     <a href="resumes/">R&eacute;sum&eacute; &rarr;</a>
   </nav>
+  <p class="grab">
+    Download as
+    <a href="resumes/Thayagapriyan-Dravidamani-Resume.pdf" download>PDF</a>
+    <a href="resumes/Thayagapriyan-Dravidamani-Resume.docx" download>Word</a>
+  </p>
 </header>
 
 <div class="pipe">
