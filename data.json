@@ -1,0 +1,124 @@
+{
+  "_comment": "Edit this file to update the site. No HTML needed. Keys are described in README.md.",
+
+  "profile": {
+    "name": "Thayagapriyan Dravidamani",
+    "role": "systems integration lead",
+    "status": "Texas · open to conversations",
+    "lede": "Ten years making enterprise systems agree on a contract — <strong>Salesforce to SAP S4/HANA, Hybris to AS400, Kafka at 10MB a message</strong>. I design the API-led layer underneath, then automate the pipeline that ships it. Lately the same discipline applied to <strong>agent runtimes on AWS Bedrock</strong>.",
+    "badges": ["LTM · USA", "10+ years", "MuleSoft · AWS"],
+    "links": [
+      { "label": "GitHub →", "href": "https://github.com/thayagapriyan", "primary": true },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/thayagapriyan" },
+      { "label": "Email", "href": "mailto:thayagapriyand@gmail.com" },
+      { "label": "Résumé →", "href": "resumes/" }
+    ],
+    "downloads": [
+      { "label": "PDF", "href": "resumes/Thayagapriyan-Dravidamani-Resume.pdf" },
+      { "label": "Word", "href": "resumes/Thayagapriyan-Dravidamani-Resume.docx" }
+    ]
+  },
+
+  "experience": [
+    {
+      "when": "2021–now",
+      "title": "Systems Integration Lead",
+      "org": "LTM · USA",
+      "detail": "Integration architecture for Salesforce, SAP S4/HANA and e-commerce programs. Delivered the SAP migration layer on a canonical data model, architected 10MB+ Kafka streaming inside Mule, and set the platform's security patterns — AWS Signature V4 and Salesforce JWT with RSA key pairs."
+    },
+    {
+      "when": "2018–2021",
+      "title": "Senior MuleSoft Developer",
+      "org": "Aspire Systems · India",
+      "detail": "Warranty, insurance and financial services integrations. Contract-first SOAP aggregation across Salesforce and Big Machines, a dynamic multi-PDF generation service with audit logging, and JPMC payment authorization lifecycle integration."
+    },
+    {
+      "when": "2015–2018",
+      "title": "MuleSoft Developer",
+      "org": "Tata Consultancy Services · India",
+      "detail": "Built one of the account's earliest API-led implementations — Experience, Process and System layers routing all mobile app traffic through Mule — and the retail pipelines behind it: Hybris to AS400 via S3, loyalty APIs, scheduled file transfer."
+    }
+  ],
+
+  "work": [
+    {
+      "name": "askme-teams-bot",
+      "tech": "TypeScript",
+      "href": "https://github.com/thayagapriyan/askme-teams-bot",
+      "desc": "Teams bot that forwards @mentions to an A2A-compliant Bedrock AgentCore agent over SigV4-signed JSON-RPC."
+    },
+    {
+      "name": "agentcore-multiagent",
+      "tech": "TypeScript",
+      "href": "https://github.com/thayagapriyan/agentcore-multiagent",
+      "desc": "Multi-agent orchestration on AWS Bedrock AgentCore."
+    },
+    {
+      "name": "second-brain",
+      "tech": "Python · RAG",
+      "href": "https://github.com/thayagapriyan/second-brain",
+      "desc": "Local PDF question-answering over ChromaDB and Ollama — retrieval that runs without sending documents anywhere."
+    },
+    {
+      "name": "first-custom-policy-flex",
+      "tech": "Rust",
+      "href": "https://github.com/thayagapriyan/first-custom-policy-flex",
+      "desc": "Custom policy for Anypoint Flex Gateway."
+    },
+    {
+      "name": "aws-api-gateway",
+      "tech": "Terraform",
+      "href": "https://github.com/thayagapriyan/aws-api-gateway",
+      "desc": "Reusable modules for API Gateway infrastructure."
+    },
+    {
+      "name": "mule-custom-aggregator",
+      "tech": "Java",
+      "href": "https://github.com/thayagapriyan/mule-custom-aggregator",
+      "desc": "Custom aggregator component extending the Mule runtime."
+    },
+    {
+      "name": "tls-maven-plugin",
+      "tech": "Java · Maven",
+      "href": "https://github.com/thayagapriyan/tls-maven-plugin",
+      "desc": "Maven plugin handling TLS certificates inside the build lifecycle."
+    },
+    {
+      "name": "agent-lab",
+      "tech": "Python",
+      "href": "https://github.com/thayagapriyan/agent-lab",
+      "desc": "Working notes on agent design patterns and tooling."
+    }
+  ],
+
+  "stack": [
+    {
+      "layer": "Platforms",
+      "items": ["Anypoint Platform*", "CloudHub 1.0/2.0", "Runtime Fabric", "Flex Gateway", "Mule 3 & 4"]
+    },
+    {
+      "layer": "Messaging",
+      "items": ["Kafka (AWS MSK)*", "Anypoint MQ", "ActiveMQ", "RabbitMQ"]
+    },
+    {
+      "layer": "Architecture",
+      "items": ["API-led connectivity*", "Event-driven", "Canonical data modeling", "Pub/sub", "Microservices"]
+    },
+    {
+      "layer": "Security",
+      "items": ["OAuth 2.0 / JWT*", "AWS Signature V4*", "Salesforce JWT (RSA)", "TLS / mTLS", "API policies"]
+    },
+    {
+      "layer": "Cloud & CI",
+      "items": ["AWS*", "S3 · SES · MSK", "GCP BigQuery", "GitHub Actions", "Jenkins", "Bamboo", "Docker"]
+    },
+    {
+      "layer": "Languages",
+      "items": ["Java*", "DataWeave*", "TypeScript*", "Spring Boot", "Python", "Groovy", "XSLT"]
+    },
+    {
+      "layer": "Systems",
+      "items": ["Salesforce*", "SAP S4/HANA*", "Hybris", "JPMC Payments", "AS400"]
+    }
+  ]
+}

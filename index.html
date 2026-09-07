@@ -162,6 +162,10 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
   border-bottom:1px solid var(--line-lit);padding-bottom:1px;transition:color .18s,border-color .18s;
 }
 .grab a:hover,.grab a:focus-visible{color:var(--signal);border-color:var(--signal)}
+.load-err{
+  font-family:var(--mono);font-size:12px;color:var(--warm);
+  border:1px solid var(--line-lit);background:var(--panel);padding:14px 16px;margin:0;
+}
 
 /* pipeline */
 .pipe{margin:8px 0 0;border:1px solid var(--line);background:var(--panel);padding:26px 22px 20px;overflow-x:auto}
@@ -365,142 +369,17 @@ footer a:hover{color:var(--signal)}
 
 <section id="experience">
   <div class="sec-head"><h2>Experience</h2><span class="stage">Track record</span></div>
-  <div class="tl">
-    <div class="role">
-      <div class="when">2021&ndash;now</div>
-      <div>
-        <h3>Systems Integration Lead</h3>
-        <p class="org">LTM &middot; USA</p>
-        <p>Integration architecture for Salesforce, SAP S4/HANA and e-commerce programs. Delivered
-        the SAP migration layer on a canonical data model, architected 10MB+ Kafka streaming inside
-        Mule, and set the platform&rsquo;s security patterns &mdash; AWS Signature V4 and Salesforce
-        JWT with RSA key pairs.</p>
-      </div>
-    </div>
-    <div class="role">
-      <div class="when">2018&ndash;2021</div>
-      <div>
-        <h3>Senior MuleSoft Developer</h3>
-        <p class="org">Aspire Systems &middot; India</p>
-        <p>Warranty, insurance and financial services integrations. Contract-first SOAP aggregation
-        across Salesforce and Big Machines, a dynamic multi-PDF generation service with audit
-        logging, and JPMC payment authorization lifecycle integration.</p>
-      </div>
-    </div>
-    <div class="role">
-      <div class="when">2015&ndash;2018</div>
-      <div>
-        <h3>MuleSoft Developer</h3>
-        <p class="org">Tata Consultancy Services &middot; India</p>
-        <p>Built one of the account&rsquo;s earliest API-led implementations &mdash; Experience,
-        Process and System layers routing all mobile app traffic through Mule &mdash; and the retail
-        pipelines behind it: Hybris to AS400 via S3, loyalty APIs, scheduled file transfer.</p>
-      </div>
-    </div>
-  </div>
+  <div class="tl" data-list="experience"></div>
 </section>
 
 <section id="work">
   <div class="sec-head"><h2>Selected work</h2><span class="stage">Public repositories</span></div>
-  <div class="work">
-    <a href="https://github.com/thayagapriyan/askme-teams-bot">
-      <span class="name">askme-teams-bot</span>
-      <span class="tech">TypeScript</span>
-      <p class="desc">Teams bot that forwards @mentions to an A2A-compliant Bedrock AgentCore agent
-      over SigV4-signed JSON-RPC.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/agentcore-multiagent">
-      <span class="name">agentcore-multiagent</span>
-      <span class="tech">TypeScript</span>
-      <p class="desc">Multi-agent orchestration on AWS Bedrock AgentCore.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/second-brain">
-      <span class="name">second-brain</span>
-      <span class="tech">Python · RAG</span>
-      <p class="desc">Local PDF question-answering over ChromaDB and Ollama &mdash; retrieval that
-      runs without sending documents anywhere.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/first-custom-policy-flex">
-      <span class="name">first-custom-policy-flex</span>
-      <span class="tech">Rust</span>
-      <p class="desc">Custom policy for Anypoint Flex Gateway.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/aws-api-gateway">
-      <span class="name">aws-api-gateway</span>
-      <span class="tech">Terraform</span>
-      <p class="desc">Reusable modules for API Gateway infrastructure.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/mule-custom-aggregator">
-      <span class="name">mule-custom-aggregator</span>
-      <span class="tech">Java</span>
-      <p class="desc">Custom aggregator component extending the Mule runtime.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/tls-maven-plugin">
-      <span class="name">tls-maven-plugin</span>
-      <span class="tech">Java · Maven</span>
-      <p class="desc">Maven plugin handling TLS certificates inside the build lifecycle.</p>
-    </a>
-    <a href="https://github.com/thayagapriyan/agent-lab">
-      <span class="name">agent-lab</span>
-      <span class="tech">Python</span>
-      <p class="desc">Working notes on agent design patterns and tooling.</p>
-    </a>
-  </div>
+  <div class="work" data-list="work"></div>
 </section>
 
 <section id="stack">
   <div class="sec-head"><h2>Stack</h2><span class="stage">By layer</span></div>
-  <dl class="stack">
-    <div class="layer">
-      <dt>Platforms</dt>
-      <dd>
-        <span class="key">Anypoint Platform</span><span>CloudHub 1.0/2.0</span>
-        <span>Runtime Fabric</span><span>Flex Gateway</span><span>Mule 3 &amp; 4</span>
-      </dd>
-    </div>
-    <div class="layer">
-      <dt>Messaging</dt>
-      <dd>
-        <span class="key">Kafka (AWS MSK)</span><span>Anypoint MQ</span>
-        <span>ActiveMQ</span><span>RabbitMQ</span>
-      </dd>
-    </div>
-    <div class="layer">
-      <dt>Architecture</dt>
-      <dd>
-        <span class="key">API-led connectivity</span><span>Event-driven</span>
-        <span>Canonical data modeling</span><span>Pub/sub</span><span>Microservices</span>
-      </dd>
-    </div>
-    <div class="layer">
-      <dt>Security</dt>
-      <dd>
-        <span class="key">OAuth 2.0 / JWT</span><span class="key">AWS Signature V4</span>
-        <span>Salesforce JWT (RSA)</span><span>TLS / mTLS</span><span>API policies</span>
-      </dd>
-    </div>
-    <div class="layer">
-      <dt>Cloud &amp; CI</dt>
-      <dd>
-        <span class="key">AWS</span><span>S3 &middot; SES &middot; MSK</span><span>GCP BigQuery</span>
-        <span>GitHub Actions</span><span>Jenkins</span><span>Bamboo</span><span>Docker</span>
-      </dd>
-    </div>
-    <div class="layer">
-      <dt>Languages</dt>
-      <dd>
-        <span class="key">Java</span><span class="key">DataWeave</span><span class="key">TypeScript</span>
-        <span>Spring Boot</span><span>Python</span><span>Groovy</span><span>XSLT</span>
-      </dd>
-    </div>
-    <div class="layer">
-      <dt>Systems</dt>
-      <dd>
-        <span class="key">Salesforce</span><span class="key">SAP S4/HANA</span>
-        <span>Hybris</span><span>JPMC Payments</span><span>AS400</span>
-      </dd>
-    </div>
-  </dl>
+  <dl class="stack" data-list="stack"></dl>
 </section>
 
 <footer>
@@ -511,6 +390,65 @@ footer a:hover{color:var(--signal)}
 </div>
 <script>
 document.getElementById("y").textContent = new Date().getFullYear();
+
+/* ── content from data.json ────────────────────────────── */
+/* Edit data.json, not this file, to change roles/projects/skills. */
+(function () {
+  var esc = function (s) {
+    return String(s).replace(/[<>]/g, function (c) { return c === "<" ? "&lt;" : "&gt;"; });
+  };
+
+  var render = {
+    experience: function (rows) {
+      return rows.map(function (r) {
+        return '<div class="role">' +
+          '<div class="when">' + esc(r.when) + '</div>' +
+          '<div><h3>' + esc(r.title) + '</h3>' +
+          '<p class="org">' + esc(r.org) + '</p>' +
+          '<p>' + r.detail + '</p></div></div>';
+      }).join("");
+    },
+    work: function (rows) {
+      return rows.map(function (r) {
+        return '<a href="' + esc(r.href) + '">' +
+          '<span class="name">' + esc(r.name) + '</span>' +
+          '<span class="tech">' + esc(r.tech) + '</span>' +
+          '<p class="desc">' + r.desc + '</p></a>';
+      }).join("");
+    },
+    stack: function (rows) {
+      return rows.map(function (r) {
+        // a trailing * marks a primary skill
+        var tags = r.items.map(function (it) {
+          var key = it.slice(-1) === "*";
+          return '<span' + (key ? ' class="key"' : '') + '>' +
+                 esc(key ? it.slice(0, -1) : it) + '</span>';
+        }).join("");
+        return '<div class="layer"><dt>' + esc(r.layer) + '</dt><dd>' + tags + '</dd></div>';
+      }).join("");
+    }
+  };
+
+  fetch("data.json")
+    .then(function (r) {
+      if (!r.ok) throw new Error("data.json " + r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      Object.keys(render).forEach(function (key) {
+        var el = document.querySelector('[data-list="' + key + '"]');
+        if (el && data[key]) el.innerHTML = render[key](data[key]);
+      });
+      document.dispatchEvent(new Event("content:ready"));
+    })
+    .catch(function (err) {
+      console.error("Could not load data.json:", err);
+      document.querySelectorAll("[data-list]").forEach(function (el) {
+        el.innerHTML = '<p class="load-err">Could not load content. ' +
+          'If you are opening this file directly, run a local server instead — see README.</p>';
+      });
+    });
+})();
 
 /* ── theme ─────────────────────────────────────────────── */
 var root = document.documentElement;
@@ -585,6 +523,7 @@ function flipTheme() {
 })();
 
 /* ── rail scroll-spy ───────────────────────────────────── */
+/* sections exist in the HTML, so this is safe to run immediately */
 (function () {
   var links = [].slice.call(document.querySelectorAll(".rail a"));
   if (!links.length || !window.IntersectionObserver) return;
