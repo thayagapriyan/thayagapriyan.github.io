@@ -23,6 +23,20 @@ Three rules for `data.json`:
 - In `experience` and `work`, the description fields allow `<strong>` for
   emphasis. Everything else is escaped.
 
+### Themes
+
+Two independent controls:
+
+- **Palette** — the switcher in the left gutter: Professional (default),
+  Village, Terminal. Stored as `data-palette` on `<html>`.
+- **Light or dark** — pull the mule tail at the top right. Stored as
+  `data-mode`.
+
+Both persist in `localStorage`. Professional/light is what a first-time
+visitor sees. The village illustration and kolam dividers only appear in
+the Village palette. To change a palette's colors, edit its block near the
+top of the `<style>` in `index.html`.
+
 ### What is NOT in data.json
 
 These are in `index.html` directly, because they're one-offs:

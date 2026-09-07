@@ -9,50 +9,98 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
+/* ── themes ────────────────────────────────────────────────
+   Two independent axes:
+     data-palette = pro | village | tech   (the left switcher)
+     data-mode    = light | dark           (the mule tail)
+   Defaults: pro + light — what a recruiter lands on.
+   ───────────────────────────────────────────────────────── */
 :root{
-  /* Tamil Nadu village palette — mann (swept earth), sengal (roof tile),
-     vaazhai (banana leaf), manjal (turmeric), kolam (rice flour) */
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Chivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --col:68ch;
+
+  /* professional · light (the default) */
+  --void:#f8f9fa; --panel:#fff; --raised:#eef1f4;
+  --line:#e3e7ec; --line-lit:#c3ccd6;
+  --fg:#15202b; --muted:#4a5764; --dim:#7d8b99;
+  --signal:#1c5d99; --warm:#a8552b; --turmeric:#b8863b;
+  --glow:rgba(28,93,153,.06);
+  --grid:rgba(60,90,120,.045);
+}
+[data-palette="pro"][data-mode="dark"]{
+  --void:#0d1117; --panel:#151b23; --raised:#1d252f;
+  --line:#232c38; --line-lit:#36424f;
+  --fg:#e8edf3; --muted:#9dabb9; --dim:#6b7885;
+  --signal:#5aa9e6; --warm:#e08b5c; --turmeric:#d4a95e;
+  --glow:rgba(90,169,230,.07);
+  --grid:rgba(140,170,200,.05);
+}
+
+/* village · light */
+[data-palette="village"]{
   --void:#f6efe2; --panel:#fffdf9; --raised:#efe4d1;
   --line:#e2d5be; --line-lit:#c6b092;
   --fg:#23190f; --muted:#5a4a38; --dim:#8b7658;
-  --signal:#1d6b45; --warm:#b6441c;
-  --turmeric:#cf9414;
+  --signal:#1d6b45; --warm:#b6441c; --turmeric:#cf9414;
   --glow:rgba(29,107,69,.07);
   --grid:rgba(122,96,58,.05);
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --sans:"Chivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --serif:"Kaisei Decol",Georgia,serif;
-  --col:68ch;
 }
-/* evening — oil-lamp warmth, never office-grey */
-@media(prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --void:#171009; --panel:#1e160d; --raised:#2a1f13;
-    --line:#332616; --line-lit:#4d3a22;
-    --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
-    --signal:#6fc39a; --warm:#f08a55;
-    --turmeric:#e8b53f;
-    --glow:rgba(111,195,154,.07);
-    --grid:rgba(200,170,120,.05);
-  }
-}
-:root[data-theme="dark"]{
+/* village · dark — oil-lamp evening, never office grey */
+[data-palette="village"][data-mode="dark"]{
   --void:#171009; --panel:#1e160d; --raised:#2a1f13;
   --line:#332616; --line-lit:#4d3a22;
   --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
-  --signal:#6fc39a; --warm:#f08a55;
-  --turmeric:#e8b53f;
+  --signal:#6fc39a; --warm:#f08a55; --turmeric:#e8b53f;
   --glow:rgba(111,195,154,.07);
   --grid:rgba(200,170,120,.05);
 }
-:root[data-theme="light"]{
-  --void:#f6efe2; --panel:#fffdf9; --raised:#efe4d1;
-  --line:#e2d5be; --line-lit:#c6b092;
-  --fg:#23190f; --muted:#5a4a38; --dim:#8b7658;
-  --signal:#1d6b45; --warm:#b6441c;
-  --turmeric:#cf9414;
-  --glow:rgba(29,107,69,.07);
-  --grid:rgba(122,96,58,.05);
+
+/* tech · light */
+[data-palette="tech"]{
+  --void:#fbfcfb; --panel:#fff; --raised:#f1f5f4;
+  --line:#e2e8e6; --line-lit:#c8d4d1;
+  --fg:#101617; --muted:#4e5c5e; --dim:#7c8a8c;
+  --signal:#00786e; --warm:#c04a22; --turmeric:#b08814;
+  --glow:rgba(0,120,110,.05);
+  --grid:rgba(16,60,58,.045);
+}
+/* tech · dark — the terminal look */
+[data-palette="tech"][data-mode="dark"]{
+  --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
+  --line:#1f272a; --line-lit:#2c383c;
+  --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
+  --signal:#2ff5e0; --warm:#ff7a45; --turmeric:#e8c33f;
+  --glow:rgba(47,245,224,.055);
+  --grid:rgba(120,160,158,.07);
+}
+
+/* honour the OS only until the visitor chooses for themselves */
+@media(prefers-color-scheme:dark){
+  :root:not([data-mode]){
+    --void:#0d1117; --panel:#151b23; --raised:#1d252f;
+    --line:#232c38; --line-lit:#36424f;
+    --fg:#e8edf3; --muted:#9dabb9; --dim:#6b7885;
+    --signal:#5aa9e6; --warm:#e08b5c; --turmeric:#d4a95e;
+    --glow:rgba(90,169,230,.07);
+    --grid:rgba(140,170,200,.05);
+  }
+  [data-palette="village"]:not([data-mode]){
+    --void:#171009; --panel:#1e160d; --raised:#2a1f13;
+    --line:#332616; --line-lit:#4d3a22;
+    --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
+    --signal:#6fc39a; --warm:#f08a55; --turmeric:#e8b53f;
+    --glow:rgba(111,195,154,.07);
+    --grid:rgba(200,170,120,.05);
+  }
+  [data-palette="tech"]:not([data-mode]){
+    --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
+    --line:#1f272a; --line-lit:#2c383c;
+    --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
+    --signal:#2ff5e0; --warm:#ff7a45; --turmeric:#e8c33f;
+    --glow:rgba(47,245,224,.055);
+    --grid:rgba(120,160,158,.07);
+  }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -94,6 +142,50 @@ body::before{
 .rail a[aria-current="true"]{color:var(--signal)}
 .rail a[aria-current="true"]::after{width:34px;box-shadow:0 0 8px var(--signal)}
 
+/* palette switcher — left gutter, mirrors the section rail on the right */
+.themes{
+  position:fixed;left:24px;top:50%;transform:translateY(-50%);
+  z-index:40;display:none;
+}
+@media(min-width:1240px){.themes{display:block}}
+.themes h2{
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 10px;font-weight:400;
+}
+.themes ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.themes button{
+  display:flex;align-items:center;gap:9px;width:100%;
+  font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dim);background:none;border:0;padding:5px 0;cursor:pointer;
+  transition:color .2s;text-align:left;
+}
+.themes button:hover{color:var(--fg)}
+.themes button[aria-pressed="true"]{color:var(--signal)}
+.swatch{
+  width:15px;height:15px;border-radius:50%;flex:none;
+  border:1px solid var(--line-lit);position:relative;
+  transition:transform .2s,box-shadow .2s;
+}
+.themes button:hover .swatch{transform:scale(1.14)}
+.themes button[aria-pressed="true"] .swatch{
+  box-shadow:0 0 0 2px var(--void),0 0 0 3.5px var(--signal);
+}
+/* each swatch shows its own palette, not the active one */
+.sw-pro{background:linear-gradient(135deg,#1c5d99 50%,#f8f9fa 50%)}
+.sw-village{background:linear-gradient(135deg,#1d6b45 50%,#f6efe2 50%)}
+.sw-tech{background:linear-gradient(135deg,#00786e 50%,#080b0c 50%)}
+
+/* small screens: a row under the hero instead of a fixed rail */
+@media(max-width:1239px){
+  .themes{
+    position:static;transform:none;display:block;
+    margin:0 0 26px;
+  }
+  .themes h2{margin-bottom:7px}
+  .themes ul{flex-direction:row;gap:14px;flex-wrap:wrap}
+  .themes button{width:auto}
+}
+
 /* mule tail — drag it down to switch theme */
 .tail{
   position:fixed;top:0;right:96px;z-index:40;
@@ -114,12 +206,7 @@ body::before{
 .tail:hover .tuft{fill:var(--signal)}
 .tail .knob{fill:var(--panel);stroke:var(--line-lit);stroke-width:2;transition:stroke .25s}
 .tail:hover .knob{stroke:var(--signal)}
-.tail-hint{
-  position:absolute;top:96px;left:50%;transform:translateX(-50%);
-  font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--dim);white-space:nowrap;opacity:0;transition:opacity .25s;pointer-events:none;
-}
-.tail:hover .tail-hint,.tail:focus-visible .tail-hint{opacity:1}
+
 @media(max-width:700px){.tail{right:14px;width:48px;height:112px}}
 @media(prefers-reduced-motion:reduce){.tail,.tail *{transition:none}}
 
@@ -171,7 +258,8 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
 }
 
 /* village scene — drawn line-work, sits under the hero */
-.village{margin:14px 0 0;pointer-events:none}
+.village{margin:14px 0 0;pointer-events:none;display:none}
+[data-palette="village"] .village{display:block}
 .village svg{display:block;width:100%;height:auto;max-height:150px;overflow:visible}
 .village path,.village rect{
   fill:none;stroke-linecap:round;stroke-linejoin:round;
@@ -194,7 +282,7 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
 
 /* kolam divider — the dot lattice drawn at thresholds */
 section{position:relative}
-section::before{
+[data-palette="village"] section::before{
   content:"";position:absolute;top:-6px;left:0;width:156px;height:12px;
   background-image:radial-gradient(circle,var(--turmeric) 1.7px,transparent 1.8px);
   background-size:16px 12px;opacity:.7;
@@ -277,8 +365,20 @@ footer a:hover{color:var(--signal)}
 </head>
 <body>
 
+<nav class="themes" aria-label="Color theme">
+  <h2 id="themes-label">Theme</h2>
+  <ul>
+    <li><button type="button" data-set="pro" aria-pressed="true">
+      <span class="swatch sw-pro"></span>Professional</button></li>
+    <li><button type="button" data-set="village" aria-pressed="false">
+      <span class="swatch sw-village"></span>Village</button></li>
+    <li><button type="button" data-set="tech" aria-pressed="false">
+      <span class="swatch sw-tech"></span>Terminal</button></li>
+  </ul>
+</nav>
+
 <button class="tail" id="tail" type="button"
-        aria-label="Pull the tail to switch between light and dark"
+        aria-label="Pull to switch between light and dark"
         title="Pull to switch theme">
   <svg viewBox="0 0 64 150" aria-hidden="true">
     <!-- tail: a rope from the top edge, ending in a tuft -->
@@ -294,7 +394,6 @@ footer a:hover{color:var(--signal)}
         c5 3 9 7 13 12 c-2 -12 -11 -22 -22 -28 z"/>
     </g>
   </svg>
-  <span class="tail-hint">pull me</span>
 </button>
 
 <nav class="rail" aria-label="Sections">
@@ -465,23 +564,47 @@ document.getElementById("y").textContent = new Date().getFullYear();
     });
 })();
 
-/* ── theme ─────────────────────────────────────────────── */
+/* ── theme: palette (switcher) × mode (mule tail) ──────── */
 var root = document.documentElement;
+
 try {
-  var saved = localStorage.getItem("theme");
-  if (saved) root.setAttribute("data-theme", saved);
+  var savedPalette = localStorage.getItem("palette");
+  var savedMode    = localStorage.getItem("mode");
+  if (savedPalette) root.setAttribute("data-palette", savedPalette);
+  if (savedMode)    root.setAttribute("data-mode", savedMode);
 } catch (e) {}
 
-function currentTheme() {
-  var set = root.getAttribute("data-theme");
+function currentMode() {
+  var set = root.getAttribute("data-mode");
   if (set) return set;
   return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
-function flipTheme() {
-  var next = currentTheme() === "dark" ? "light" : "dark";
-  root.setAttribute("data-theme", next);
-  try { localStorage.setItem("theme", next); } catch (e) {}
+function flipMode() {
+  var next = currentMode() === "dark" ? "light" : "dark";
+  root.setAttribute("data-mode", next);
+  try { localStorage.setItem("mode", next); } catch (e) {}
 }
+
+/* palette switcher */
+(function () {
+  var buttons = [].slice.call(document.querySelectorAll(".themes button"));
+  if (!buttons.length) return;
+
+  function paint() {
+    var active = root.getAttribute("data-palette") || "pro";
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.set === active));
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      root.setAttribute("data-palette", b.dataset.set);
+      try { localStorage.setItem("palette", b.dataset.set); } catch (e) {}
+      paint();
+    });
+  });
+  paint();
+})();
 
 /* ── mule tail: drag down past the threshold to flip ────── */
 (function () {
@@ -501,7 +624,7 @@ function flipTheme() {
   function release() {
     if (!dragging) return;
     dragging = false;
-    if (pull >= TRIGGER) flipTheme();
+    if (pull >= TRIGGER) flipMode();
     // spring back
     var from = pull, t0 = null;
     function ease(ts) {
@@ -530,10 +653,10 @@ function flipTheme() {
 
   // keyboard + plain click both work
   tail.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipTheme(); }
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipMode(); }
   });
   tail.addEventListener("click", function () {
-    if (pull === 0 && !dragging) flipTheme();
+    if (pull === 0 && !dragging) flipMode();
   });
 })();
 
