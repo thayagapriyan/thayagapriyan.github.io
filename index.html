@@ -7,16 +7,49 @@
 <meta name="description" content="Integration engineer building API platforms and AI agent systems on AWS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
 :root{
+  /* dark is this page's home state; light is the alternate */
   --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
   --line:#1f272a; --line-lit:#2c383c;
   --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
-  --signal:#3ddbd9; --warm:#f97e5c;
+  --signal:#2ff5e0; --warm:#ff7a45;
+  --glow:rgba(47,245,224,.055);
+  --node-fill:#0e1214; --node-alt:#161c1f;
+  --grid:rgba(120,160,158,.07);
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --sans:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --sans:"Chivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --col:68ch;
+}
+:root:not([data-theme="dark"]){
+  --void:#fbfcfb; --panel:#fff; --raised:#f1f5f4;
+  --line:#e2e8e6; --line-lit:#c8d4d1;
+  --fg:#101617; --muted:#4e5c5e; --dim:#7c8a8c;
+  --signal:#00786e; --warm:#c04a22;
+  --glow:rgba(0,120,110,.05);
+  --node-fill:#fff; --node-alt:#f1f5f4;
+  --grid:rgba(16,60,58,.045);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
+    --line:#1f272a; --line-lit:#2c383c;
+    --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
+    --signal:#2ff5e0; --warm:#ff7a45;
+    --glow:rgba(47,245,224,.055);
+    --node-fill:#0e1214; --node-alt:#161c1f;
+    --grid:rgba(120,160,158,.07);
+  }
+}
+:root[data-theme="dark"]{
+  --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
+  --line:#1f272a; --line-lit:#2c383c;
+  --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
+  --signal:#2ff5e0; --warm:#ff7a45;
+  --glow:rgba(47,245,224,.055);
+  --node-fill:#0e1214; --node-alt:#161c1f;
+  --grid:rgba(120,160,158,.07);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -24,10 +57,11 @@ body{
   margin:0;background:var(--void);color:var(--fg);
   font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  transition:background-color .45s ease,color .45s ease;
   background-image:
-    radial-gradient(ellipse 900px 500px at 70% -8%,rgba(61,219,217,.055),transparent 70%),
-    linear-gradient(var(--line) 1px,transparent 1px),
-    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    radial-gradient(ellipse 900px 500px at 70% -8%,var(--glow),transparent 70%),
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:auto,72px 72px,72px 72px;
 }
 body::before{
@@ -36,21 +70,55 @@ body::before{
 }
 .shell{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 28px}
 
-/* rail */
+/* rail — pinned to the right gutter, clear of the content column */
 .rail{
-  position:fixed;left:max(28px,calc(50vw - 550px + 28px));top:50%;
-  transform:translateY(-50%);z-index:5;display:none;
+  position:fixed;right:26px;top:50%;transform:translateY(-50%);
+  z-index:5;display:none;
 }
-@media(min-width:1180px){.rail{display:block}}
-.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+@media(min-width:1240px){.rail{display:block}}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
 .rail a{
-  display:flex;align-items:center;gap:11px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);text-decoration:none;padding:7px 0;transition:color .2s;
+  display:flex;align-items:center;justify-content:flex-end;gap:11px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;padding:7px 0;transition:color .22s;
 }
-.rail a::before{content:"";height:1px;background:currentColor;width:14px;transition:width .2s;flex:none}
+.rail a::after{
+  content:"";height:1px;background:currentColor;width:16px;
+  transition:width .22s,background .22s;flex:none;
+}
 .rail a:hover,.rail a:focus-visible{color:var(--signal)}
-.rail a:hover::before,.rail a:focus-visible::before{width:30px}
+.rail a:hover::after,.rail a:focus-visible::after{width:34px}
+.rail a[aria-current="true"]{color:var(--signal)}
+.rail a[aria-current="true"]::after{width:34px;box-shadow:0 0 8px var(--signal)}
+
+/* mule tail — drag it down to switch theme */
+.tail{
+  position:fixed;top:0;right:96px;z-index:40;
+  width:64px;height:150px;cursor:grab;
+  touch-action:none;user-select:none;-webkit-user-select:none;
+  background:none;border:0;padding:0;
+  transition:filter .2s;
+}
+.tail:active{cursor:grabbing}
+.tail:hover{filter:drop-shadow(0 3px 10px rgba(47,245,224,.28))}
+.tail svg{display:block;width:100%;height:100%;overflow:visible}
+.tail .rope{
+  stroke:var(--line-lit);stroke-width:2.5;fill:none;stroke-linecap:round;
+  transition:stroke .25s;
+}
+.tail:hover .rope{stroke:var(--signal)}
+.tail .tuft{fill:var(--line-lit);transition:fill .25s}
+.tail:hover .tuft{fill:var(--signal)}
+.tail .knob{fill:var(--panel);stroke:var(--line-lit);stroke-width:2;transition:stroke .25s}
+.tail:hover .knob{stroke:var(--signal)}
+.tail-hint{
+  position:absolute;top:96px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);white-space:nowrap;opacity:0;transition:opacity .25s;pointer-events:none;
+}
+.tail:hover .tail-hint,.tail:focus-visible .tail-hint{opacity:1}
+@media(max-width:700px){.tail{right:14px;width:48px;height:112px}}
+@media(prefers-reduced-motion:reduce){.tail,.tail *{transition:none}}
 
 /* hero */
 header{padding:104px 0 56px;max-width:var(--col)}
@@ -60,7 +128,7 @@ header{padding:104px 0 56px;max-width:var(--col)}
 }
 .eyebrow::before{
   content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);
-  box-shadow:0 0 0 4px rgba(61,219,217,.14);flex:none;
+  box-shadow:0 0 0 4px var(--glow);flex:none;
 }
 h1{
   font-family:var(--sans);font-weight:700;letter-spacing:-.035em;
@@ -84,7 +152,7 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
 }
 .links a:hover,.links a:focus-visible{border-color:var(--signal);color:var(--signal);background:var(--raised)}
 .links a.primary{border-color:var(--signal);color:var(--signal)}
-.links a.primary:hover{background:rgba(61,219,217,.09)}
+.links a.primary:hover{background:var(--glow)}
 .grab{
   font-family:var(--mono);font-size:11px;color:var(--dim);
   margin:15px 0 0;display:flex;align-items:center;gap:9px;flex-wrap:wrap;
@@ -108,6 +176,21 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
   .flow{animation:none;stroke-dasharray:none;opacity:.5}
   html{scroll-behavior:auto}
 }
+
+/* pipeline svg follows the theme */
+.pipe .n-box{fill:var(--node-fill);stroke:var(--line)}
+.pipe .n-api{stroke:var(--signal);stroke-opacity:.5}
+.pipe .n-ai{fill:var(--node-alt);stroke:var(--warm);stroke-opacity:.55}
+.pipe .n-cap-api{fill:var(--signal);fill-opacity:.6}
+.pipe .n-cap-ai{fill:var(--warm);fill-opacity:.65}
+.pipe .n-title{fill:var(--fg)}
+.pipe .n-sub{fill:var(--muted)}
+.pipe .n-dim{fill:var(--dim)}
+.pipe .n-wire{stroke:var(--line-lit)}
+.pipe .n-arrow{fill:var(--line-lit)}
+.pipe .n-rule{stroke:var(--line);stroke-width:1}
+.pipe svg text{transition:fill .4s}
+.pipe svg rect,.pipe svg path,.pipe svg line{transition:fill .4s,stroke .4s}
 
 /* sections */
 section{padding:60px 0;border-top:1px solid var(--line);max-width:var(--col)}
@@ -186,6 +269,26 @@ footer a:hover{color:var(--signal)}
 </head>
 <body>
 
+<button class="tail" id="tail" type="button"
+        aria-label="Pull the tail to switch between light and dark"
+        title="Pull to switch theme">
+  <svg viewBox="0 0 64 150" aria-hidden="true">
+    <!-- tail: a rope from the top edge, ending in a tuft -->
+    <path id="tailRope" class="rope" d="M32 0 C32 30, 30 54, 32 80"/>
+    <g id="tailEnd">
+      <circle class="knob" cx="32" cy="82" r="6"/>
+      <path class="tuft" d="M32 87
+        c-4 9 -9 16 -15 22 c5 -1 9 -3 12 -6
+        c-4 11 -9 19 -15 26 c7 -2 12 -6 16 -12
+        c-2 12 -5 21 -10 29 c9 -5 15 -14 18 -26
+        c1 11 1 20 -1 28 c7 -8 10 -19 9 -32
+        c4 9 7 16 11 21 c1 -12 -3 -24 -10 -34
+        c5 3 9 7 13 12 c-2 -12 -11 -22 -22 -28 z"/>
+    </g>
+  </svg>
+  <span class="tail-hint">pull me</span>
+</button>
+
 <nav class="rail" aria-label="Sections">
   <ol>
     <li><a href="#experience">Experience</a></li>
@@ -224,39 +327,39 @@ footer a:hover{color:var(--signal)}
   <svg viewBox="0 0 680 152" role="img" aria-label="Pipeline diagram: source systems flow through an API and integration layer, into an agent runtime, out to consumer channels, all running on AWS with Terraform and CI underneath.">
     <defs>
       <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M0 0 L8 4 L0 8 z" fill="#2c383c"/>
+        <path d="M0 0 L8 4 L0 8 z" class="n-arrow"/>
       </marker>
     </defs>
 
-    <g stroke="#2c383c" stroke-width="1.25" fill="none" marker-end="url(#ar)">
+    <g class="n-wire" stroke-width="1.25" fill="none" marker-end="url(#ar)">
       <path class="flow" d="M138 68 H184"/>
       <path class="flow" d="M318 68 H364"/>
       <path class="flow" d="M498 68 H544"/>
     </g>
 
-    <rect x="18" y="42" width="120" height="52" fill="#0e1214" stroke="#1f272a"/>
-    <text x="78" y="66" fill="#e6ecec" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Systems</text>
-    <text x="78" y="82" fill="#55635f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">SAP · Salesforce · Hybris</text>
+    <rect x="18" y="42" width="120" height="52" class="n-box"/>
+    <text x="78" y="66" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Systems</text>
+    <text x="78" y="82" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">SAP · Salesforce · Hybris</text>
 
-    <rect x="190" y="34" width="128" height="68" fill="#0e1214" stroke="#3ddbd9" stroke-opacity=".45"/>
-    <rect x="190" y="34" width="128" height="2" fill="#3ddbd9" fill-opacity=".55"/>
-    <text x="254" y="60" fill="#e6ecec" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">API layer</text>
-    <text x="254" y="76" fill="#7d8b8e" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Anypoint · Flex Gateway</text>
-    <text x="254" y="90" fill="#55635f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">DataWeave · policies</text>
+    <rect x="190" y="34" width="128" height="68" class="n-box n-api"/>
+    <rect x="190" y="34" width="128" height="2" class="n-cap-api"/>
+    <text x="254" y="60" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">API layer</text>
+    <text x="254" y="76" class="n-sub" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Anypoint · Flex Gateway</text>
+    <text x="254" y="90" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">DataWeave · policies</text>
 
-    <rect x="370" y="34" width="128" height="68" fill="#161c1f" stroke="#f97e5c" stroke-opacity=".5"/>
-    <rect x="370" y="34" width="128" height="2" fill="#f97e5c" fill-opacity=".6"/>
-    <text x="434" y="60" fill="#e6ecec" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Agents</text>
-    <text x="434" y="76" fill="#7d8b8e" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Bedrock AgentCore</text>
-    <text x="434" y="90" fill="#55635f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">A2A · Strands · RAG</text>
+    <rect x="370" y="34" width="128" height="68" class="n-box n-ai"/>
+    <rect x="370" y="34" width="128" height="2" class="n-cap-ai"/>
+    <text x="434" y="60" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Agents</text>
+    <text x="434" y="76" class="n-sub" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Bedrock AgentCore</text>
+    <text x="434" y="90" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">A2A · Strands · RAG</text>
 
-    <rect x="550" y="42" width="112" height="52" fill="#0e1214" stroke="#1f272a"/>
-    <text x="606" y="66" fill="#e6ecec" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Channels</text>
-    <text x="606" y="82" fill="#55635f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Teams · web · API</text>
+    <rect x="550" y="42" width="112" height="52" class="n-box"/>
+    <text x="606" y="66" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Channels</text>
+    <text x="606" y="82" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Teams · web · API</text>
 
-    <line x1="18" y1="124" x2="662" y2="124" stroke="#1f272a" stroke-width="1"/>
-    <text x="18" y="142" fill="#55635f" font-family="JetBrains Mono,monospace" font-size="9">TERRAFORM · GITHUB ACTIONS · JENKINS</text>
-    <text x="662" y="142" fill="#55635f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="end">AWS</text>
+    <line x1="18" y1="124" x2="662" y2="124" class="n-rule"/>
+    <text x="18" y="142" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9">TERRAFORM · GITHUB ACTIONS · JENKINS</text>
+    <text x="662" y="142" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="end">AWS</text>
   </svg>
 </div>
 
@@ -406,6 +509,101 @@ footer a:hover{color:var(--signal)}
 </footer>
 
 </div>
-<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+
+/* ── theme ─────────────────────────────────────────────── */
+var root = document.documentElement;
+try {
+  var saved = localStorage.getItem("theme");
+  if (saved) root.setAttribute("data-theme", saved);
+} catch (e) {}
+
+function currentTheme() {
+  var set = root.getAttribute("data-theme");
+  if (set) return set;
+  return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+function flipTheme() {
+  var next = currentTheme() === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+}
+
+/* ── mule tail: drag down past the threshold to flip ────── */
+(function () {
+  var tail  = document.getElementById("tail");
+  var rope  = document.getElementById("tailRope");
+  var end   = document.getElementById("tailEnd");
+  if (!tail || !rope || !end) return;
+
+  var PULL_MAX = 46, TRIGGER = 30;
+  var dragging = false, startY = 0, pull = 0;
+
+  function draw(d) {
+    // rope stretches, tuft follows
+    rope.setAttribute("d", "M32 0 C32 " + (30 + d * .5) + ", 30 " + (54 + d * .8) + ", 32 " + (80 + d));
+    end.setAttribute("transform", "translate(0," + d + ")");
+  }
+  function release() {
+    if (!dragging) return;
+    dragging = false;
+    if (pull >= TRIGGER) flipTheme();
+    // spring back
+    var from = pull, t0 = null;
+    function ease(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / 340, 1);
+      // overshoot then settle
+      var e = 1 - Math.pow(2, -9 * k) * Math.cos(k * 13);
+      draw(from * (1 - e));
+      if (k < 1) requestAnimationFrame(ease); else draw(0);
+    }
+    requestAnimationFrame(ease);
+    pull = 0;
+  }
+
+  tail.addEventListener("pointerdown", function (e) {
+    dragging = true; startY = e.clientY; pull = 0;
+    tail.setPointerCapture(e.pointerId);
+  });
+  tail.addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    pull = Math.max(0, Math.min(e.clientY - startY, PULL_MAX));
+    draw(pull);
+  });
+  tail.addEventListener("pointerup", release);
+  tail.addEventListener("pointercancel", release);
+
+  // keyboard + plain click both work
+  tail.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipTheme(); }
+  });
+  tail.addEventListener("click", function () {
+    if (pull === 0 && !dragging) flipTheme();
+  });
+})();
+
+/* ── rail scroll-spy ───────────────────────────────────── */
+(function () {
+  var links = [].slice.call(document.querySelectorAll(".rail a"));
+  if (!links.length || !window.IntersectionObserver) return;
+  var map = {};
+  links.forEach(function (a) {
+    var el = document.querySelector(a.getAttribute("href"));
+    if (el) map[el.id] = a;
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var a = map[en.target.id];
+      if (a && en.isIntersecting) {
+        links.forEach(function (l) { l.removeAttribute("aria-current"); });
+        a.setAttribute("aria-current", "true");
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+</script>
 </body>
 </html>
