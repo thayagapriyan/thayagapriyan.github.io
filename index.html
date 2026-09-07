@@ -10,46 +10,49 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
 :root{
-  /* dark is this page's home state; light is the alternate */
-  --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
-  --line:#1f272a; --line-lit:#2c383c;
-  --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
-  --signal:#2ff5e0; --warm:#ff7a45;
-  --glow:rgba(47,245,224,.055);
-  --node-fill:#0e1214; --node-alt:#161c1f;
-  --grid:rgba(120,160,158,.07);
+  /* Tamil Nadu village palette — mann (swept earth), sengal (roof tile),
+     vaazhai (banana leaf), manjal (turmeric), kolam (rice flour) */
+  --void:#f6efe2; --panel:#fffdf9; --raised:#efe4d1;
+  --line:#e2d5be; --line-lit:#c6b092;
+  --fg:#23190f; --muted:#5a4a38; --dim:#8b7658;
+  --signal:#1d6b45; --warm:#b6441c;
+  --turmeric:#cf9414;
+  --glow:rgba(29,107,69,.07);
+  --grid:rgba(122,96,58,.05);
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"Chivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Kaisei Decol",Georgia,serif;
   --col:68ch;
 }
-:root:not([data-theme="dark"]){
-  --void:#fbfcfb; --panel:#fff; --raised:#f1f5f4;
-  --line:#e2e8e6; --line-lit:#c8d4d1;
-  --fg:#101617; --muted:#4e5c5e; --dim:#7c8a8c;
-  --signal:#00786e; --warm:#c04a22;
-  --glow:rgba(0,120,110,.05);
-  --node-fill:#fff; --node-alt:#f1f5f4;
-  --grid:rgba(16,60,58,.045);
-}
+/* evening — oil-lamp warmth, never office-grey */
 @media(prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
-    --line:#1f272a; --line-lit:#2c383c;
-    --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
-    --signal:#2ff5e0; --warm:#ff7a45;
-    --glow:rgba(47,245,224,.055);
-    --node-fill:#0e1214; --node-alt:#161c1f;
-    --grid:rgba(120,160,158,.07);
+    --void:#171009; --panel:#1e160d; --raised:#2a1f13;
+    --line:#332616; --line-lit:#4d3a22;
+    --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
+    --signal:#6fc39a; --warm:#f08a55;
+    --turmeric:#e8b53f;
+    --glow:rgba(111,195,154,.07);
+    --grid:rgba(200,170,120,.05);
   }
 }
 :root[data-theme="dark"]{
-  --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
-  --line:#1f272a; --line-lit:#2c383c;
-  --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
-  --signal:#2ff5e0; --warm:#ff7a45;
-  --glow:rgba(47,245,224,.055);
-  --node-fill:#0e1214; --node-alt:#161c1f;
-  --grid:rgba(120,160,158,.07);
+  --void:#171009; --panel:#1e160d; --raised:#2a1f13;
+  --line:#332616; --line-lit:#4d3a22;
+  --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
+  --signal:#6fc39a; --warm:#f08a55;
+  --turmeric:#e8b53f;
+  --glow:rgba(111,195,154,.07);
+  --grid:rgba(200,170,120,.05);
+}
+:root[data-theme="light"]{
+  --void:#f6efe2; --panel:#fffdf9; --raised:#efe4d1;
+  --line:#e2d5be; --line-lit:#c6b092;
+  --fg:#23190f; --muted:#5a4a38; --dim:#8b7658;
+  --signal:#1d6b45; --warm:#b6441c;
+  --turmeric:#cf9414;
+  --glow:rgba(29,107,69,.07);
+  --grid:rgba(122,96,58,.05);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -100,7 +103,7 @@ body::before{
   transition:filter .2s;
 }
 .tail:active{cursor:grabbing}
-.tail:hover{filter:drop-shadow(0 3px 10px rgba(47,245,224,.28))}
+.tail:hover{filter:drop-shadow(0 3px 10px var(--glow))}
 .tail svg{display:block;width:100%;height:100%;overflow:visible}
 .tail .rope{
   stroke:var(--line-lit);stroke-width:2.5;fill:none;stroke-linecap:round;
@@ -167,34 +170,35 @@ h1 .sub{display:block;color:var(--muted);font-weight:300;letter-spacing:-.02em}
   border:1px solid var(--line-lit);background:var(--panel);padding:14px 16px;margin:0;
 }
 
-/* pipeline */
-.pipe{margin:8px 0 0;border:1px solid var(--line);background:var(--panel);padding:26px 22px 20px;overflow-x:auto}
-.pipe-head{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dim);margin:0 0 20px;
+/* village scene — drawn line-work, sits under the hero */
+.village{margin:14px 0 0;pointer-events:none}
+.village svg{display:block;width:100%;height:auto;max-height:150px;overflow:visible}
+.village path,.village rect{
+  fill:none;stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .45s,fill .45s;
 }
-.pipe svg{display:block;min-width:660px;width:100%;height:auto}
-.flow{stroke-dasharray:5 7;animation:flow 2.6s linear infinite}
-@keyframes flow{to{stroke-dashoffset:-24}}
-@media(prefers-reduced-motion:reduce){
-  .flow{animation:none;stroke-dasharray:none;opacity:.5}
-  html{scroll-behavior:auto}
+.v-far path{stroke:var(--signal);stroke-width:1.3;opacity:.5;fill:var(--signal);fill-opacity:.1}
+.v-far path:first-child,.v-far path:nth-child(7){stroke:var(--warm);fill:none;stroke-width:1.9;opacity:.6}
+.village .trunk{stroke:var(--warm);stroke-width:2.2;opacity:.75}
+.village .leaf{
+  stroke:var(--signal);stroke-width:1.5;
+  fill:var(--signal);fill-opacity:.13;
 }
+.village .roof{stroke:var(--warm);stroke-width:2;fill:var(--warm);fill-opacity:.2}
+.village .roof-line{stroke:var(--warm);stroke-width:.9;opacity:.5}
+.village .wall{stroke:var(--line-lit);stroke-width:1.7;fill:var(--raised);fill-opacity:.6}
+.village .door{stroke:var(--warm);stroke-width:1.5;fill:var(--warm);fill-opacity:.16}
+.village .kolam-dot{stroke:var(--turmeric);stroke-width:3;stroke-linecap:round;opacity:.85}
+.v-ground{stroke:var(--line-lit);stroke-width:1.4;opacity:.8}
+@media(max-width:640px){.village svg{max-height:104px}}
 
-/* pipeline svg follows the theme */
-.pipe .n-box{fill:var(--node-fill);stroke:var(--line)}
-.pipe .n-api{stroke:var(--signal);stroke-opacity:.5}
-.pipe .n-ai{fill:var(--node-alt);stroke:var(--warm);stroke-opacity:.55}
-.pipe .n-cap-api{fill:var(--signal);fill-opacity:.6}
-.pipe .n-cap-ai{fill:var(--warm);fill-opacity:.65}
-.pipe .n-title{fill:var(--fg)}
-.pipe .n-sub{fill:var(--muted)}
-.pipe .n-dim{fill:var(--dim)}
-.pipe .n-wire{stroke:var(--line-lit)}
-.pipe .n-arrow{fill:var(--line-lit)}
-.pipe .n-rule{stroke:var(--line);stroke-width:1}
-.pipe svg text{transition:fill .4s}
-.pipe svg rect,.pipe svg path,.pipe svg line{transition:fill .4s,stroke .4s}
+/* kolam divider — the dot lattice drawn at thresholds */
+section{position:relative}
+section::before{
+  content:"";position:absolute;top:-6px;left:0;width:156px;height:12px;
+  background-image:radial-gradient(circle,var(--turmeric) 1.7px,transparent 1.8px);
+  background-size:16px 12px;opacity:.7;
+}
 
 /* sections */
 section{padding:60px 0;border-top:1px solid var(--line);max-width:var(--col)}
@@ -304,14 +308,15 @@ footer a:hover{color:var(--signal)}
 <div class="shell">
 
 <header>
-  <p class="eyebrow">Texas &middot; open to conversations</p>
+  <p class="eyebrow">Texas, USA &middot; open to opportunities</p>
   <h1>Thayagapriyan<br>Dravidamani<span class="sub">systems integration lead</span></h1>
-  <p class="lede">Ten years making enterprise systems agree on a contract &mdash; <strong>Salesforce
-  to SAP S4/HANA, Hybris to AS400, Kafka at 10MB a message</strong>. I design the API-led layer
-  underneath, then automate the pipeline that ships it. Lately the same discipline applied to
-  <strong>agent runtimes on AWS Bedrock</strong>.</p>
+  <p class="lede">I am a systems integration lead with over ten years of experience connecting
+  enterprise platforms &mdash; <strong>Salesforce, SAP S4/HANA, Hybris and AS400</strong>.
+  I design API-led integration layers on MuleSoft, establish the security and observability
+  patterns teams build on, and automate the pipelines that deliver them. Most recently I have
+  extended that work into <strong>agent runtimes on AWS Bedrock</strong>.</p>
   <div class="ident">
-    <span>LTM · USA</span><span>10+ years</span><span>MuleSoft · AWS</span>
+    <span>LTM &middot; USA</span><span>10+ years</span><span>MuleSoft &middot; AWS</span>
   </div>
   <nav class="links">
     <a class="primary" href="https://github.com/thayagapriyan">GitHub &rarr;</a>
@@ -326,46 +331,56 @@ footer a:hover{color:var(--signal)}
   </p>
 </header>
 
-<div class="pipe">
-  <p class="pipe-head">What I build, end to end</p>
-  <svg viewBox="0 0 680 152" role="img" aria-label="Pipeline diagram: source systems flow through an API and integration layer, into an agent runtime, out to consumer channels, all running on AWS with Terraform and CI underneath.">
-    <defs>
-      <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M0 0 L8 4 L0 8 z" class="n-arrow"/>
-      </marker>
-    </defs>
+<div class="village" aria-hidden="true">
+  <svg viewBox="0 0 1000 150" preserveAspectRatio="xMidYMax meet">
+    <!-- distant coconut palms -->
+    <g class="v-far">
+      <path d="M118 150 V78"/>
+      <path d="M118 78 c-20-10-36-6-44 6 c15-5 30-4 44 1z"/>
+      <path d="M118 78 c20-10 36-6 44 6 c-15-5-30-4-44 1z"/>
+      <path d="M118 78 c-11-18-8-31 3-38 c5 15 4 27-3 38z"/>
+      <path d="M118 78 c-26-3-44 4-52 16 c17-9 34-13 52-11z"/>
+      <path d="M118 78 c26-3 44 4 52 16 c-17-9-34-13-52-11z"/>
 
-    <g class="n-wire" stroke-width="1.25" fill="none" marker-end="url(#ar)">
-      <path class="flow" d="M138 68 H184"/>
-      <path class="flow" d="M318 68 H364"/>
-      <path class="flow" d="M498 68 H544"/>
+      <path d="M876 150 V70"/>
+      <path d="M876 70 c-21-11-38-6-46 7 c16-6 31-5 46 1z"/>
+      <path d="M876 70 c21-11 38-6 46 7 c-16-6-31-5-46 1z"/>
+      <path d="M876 70 c-12-19-8-33 3-40 c6 16 5 29-3 40z"/>
+      <path d="M876 70 c-27-3-46 5-54 17 c18-9 36-14 54-12z"/>
+      <path d="M876 70 c27-3 46 5 54 17 c-18-9-36-14-54-12z"/>
     </g>
 
-    <rect x="18" y="42" width="120" height="52" class="n-box"/>
-    <text x="78" y="66" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Systems</text>
-    <text x="78" y="82" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">SAP · Salesforce · Hybris</text>
+    <!-- the house: tiled roof, mud walls, one door -->
+    <g class="v-house">
+      <path class="roof" d="M392 92 L470 58 L548 92 Z"/>
+      <path class="roof-line" d="M406 92 L470 64 M424 92 L470 72 M516 92 L470 64 M498 92 L470 72"/>
+      <rect class="wall" x="404" y="92" width="132" height="58"/>
+      <rect class="door" x="452" y="112" width="26" height="38"/>
+      <path class="kolam-dot" d="M420 132 h0 M432 132 h0 M420 142 h0 M432 142 h0"/>
+    </g>
 
-    <rect x="190" y="34" width="128" height="68" class="n-box n-api"/>
-    <rect x="190" y="34" width="128" height="2" class="n-cap-api"/>
-    <text x="254" y="60" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">API layer</text>
-    <text x="254" y="76" class="n-sub" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Anypoint · Flex Gateway</text>
-    <text x="254" y="90" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">DataWeave · policies</text>
+    <!-- banana trees: broad split leaves, the village's signature -->
+    <g class="v-banana">
+      <path class="trunk" d="M628 150 V92"/>
+      <path class="leaf" d="M628 96 c-30-4-48-16-56-32 c22 2 42 12 56 26z"/>
+      <path class="leaf" d="M628 96 c30-4 48-16 56-32 c-22 2-42 12-56 26z"/>
+      <path class="leaf" d="M628 100 c-26 4-42 16-48 32 c19-6 36-18 48-30z"/>
+      <path class="leaf" d="M628 100 c26 4 42 16 48 32 c-19-6-36-18-48-30z"/>
+      <path class="leaf" d="M628 92 c-6-20-2-34 8-42 c4 16 2 30-8 42z"/>
 
-    <rect x="370" y="34" width="128" height="68" class="n-box n-ai"/>
-    <rect x="370" y="34" width="128" height="2" class="n-cap-ai"/>
-    <text x="434" y="60" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Agents</text>
-    <text x="434" y="76" class="n-sub" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Bedrock AgentCore</text>
-    <text x="434" y="90" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">A2A · Strands · RAG</text>
+      <path class="trunk" d="M700 150 V104"/>
+      <path class="leaf" d="M700 108 c-24-3-38-13-44-26 c17 2 33 10 44 21z"/>
+      <path class="leaf" d="M700 108 c24-3 38-13 44-26 c-17 2-33 10-44 21z"/>
+      <path class="leaf" d="M700 112 c-21 3-34 13-38 26 c15-5 29-15 38-24z"/>
+      <path class="leaf" d="M700 104 c-5-16-1-27 6-33 c3 13 2 24-6 33z"/>
+    </g>
 
-    <rect x="550" y="42" width="112" height="52" class="n-box"/>
-    <text x="606" y="66" class="n-title" font-family="JetBrains Mono,monospace" font-size="11.5" text-anchor="middle">Channels</text>
-    <text x="606" y="82" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">Teams · web · API</text>
-
-    <line x1="18" y1="124" x2="662" y2="124" class="n-rule"/>
-    <text x="18" y="142" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9">TERRAFORM · GITHUB ACTIONS · JENKINS</text>
-    <text x="662" y="142" class="n-dim" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="end">AWS</text>
+    <!-- ground -->
+    <path class="v-ground" d="M0 150 H1000"/>
   </svg>
 </div>
+
+
 
 <section id="experience">
   <div class="sec-head"><h2>Experience</h2><span class="stage">Track record</span></div>
