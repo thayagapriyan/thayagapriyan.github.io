@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thayagapriyan Dravidamani — Résumé</title>
+<meta name="description" content="Systems Integration Lead · 10+ years enterprise integration · MuleSoft, Salesforce, SAP S4/HANA, Kafka.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Sora:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#12181a; --body:#3a4548; --soft:#6b797c; --faint:#97a3a5;
+  --rule:#dfe4e3; --rule-soft:#eef1f0;
+  --paper:#fff; --wash:#f6f8f8;
+  --signal:#0b7c7a; --warm:#b8492a;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --sans:"Sora",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--wash);color:var(--body);
+  font-family:var(--sans);font-weight:300;font-size:10.2pt;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{
+  max-width:8.5in;margin:22px auto;background:var(--paper);
+  padding:0.55in 0.62in 0.5in;
+  box-shadow:0 1px 3px rgba(18,24,26,.09),0 10px 34px rgba(18,24,26,.07);
+}
+
+/* ── masthead ─────────────────────── */
+.mast{border-bottom:2px solid var(--ink);padding-bottom:13px;margin-bottom:5px}
+h1{
+  font-family:var(--serif);font-weight:700;font-size:25pt;line-height:1.05;
+  letter-spacing:-.015em;color:var(--ink);margin:0 0 5px;
+}
+.title-line{
+  display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:8.6pt;letter-spacing:.05em;margin-bottom:11px;
+}
+.title-line .role{color:var(--signal);font-weight:500;text-transform:uppercase;letter-spacing:.13em}
+.title-line .yrs{color:var(--soft)}
+.title-line .sep{color:var(--faint)}
+.contact{
+  display:flex;flex-wrap:wrap;gap:5px 16px;
+  font-family:var(--mono);font-size:8.3pt;color:var(--soft);
+}
+.contact a{color:var(--soft);text-decoration:none;border-bottom:1px solid var(--rule)}
+.contact a:hover{color:var(--signal);border-color:var(--signal)}
+
+/* ── section headers ──────────────── */
+h2{
+  font-family:var(--mono);font-size:8.4pt;font-weight:500;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--ink);
+  margin:0 0 12px;padding-top:17px;
+  display:flex;align-items:center;gap:11px;
+}
+h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+/* ── skills grid ──────────────────── */
+.skills{display:grid;grid-template-columns:1.05in 1fr;gap:0;margin:0}
+.skills dt{
+  font-family:var(--mono);font-size:7.9pt;color:var(--signal);
+  letter-spacing:.045em;padding:5.5px 12px 5.5px 0;
+  border-top:1px solid var(--rule-soft);
+}
+.skills dd{
+  margin:0;padding:5.5px 0;font-size:9.3pt;color:var(--body);
+  border-top:1px solid var(--rule-soft);
+}
+.skills dt:first-of-type,.skills dd:first-of-type{border-top:0}
+.skills b{font-weight:500;color:var(--ink)}
+
+/* ── experience ───────────────────── */
+.role-block{margin-bottom:17px;break-inside:avoid}
+.role-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:14px;flex-wrap:wrap;margin-bottom:1px;
+}
+.role-head h3{
+  font-family:var(--serif);font-size:13pt;font-weight:600;color:var(--ink);
+  margin:0;letter-spacing:-.005em;
+}
+.dates{
+  font-family:var(--mono);font-size:8.2pt;color:var(--soft);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.org{
+  font-family:var(--mono);font-size:8.6pt;color:var(--signal);
+  margin:0 0 5px;letter-spacing:.02em;
+}
+.org .loc{color:var(--faint)}
+.summary{
+  font-style:italic;font-size:9.2pt;color:var(--soft);margin:0 0 10px;
+  font-family:var(--serif);line-height:1.45;
+}
+h4{
+  font-family:var(--mono);font-size:7.9pt;font-weight:500;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--warm);margin:11px 0 5px;
+}
+ul{margin:0;padding:0;list-style:none}
+li{
+  position:relative;padding-left:14px;margin-bottom:5.5px;
+  font-size:9.5pt;line-height:1.47;color:var(--body);
+}
+li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:4px;height:1px;background:var(--faint);
+}
+li b{font-weight:500;color:var(--ink)}
+
+/* ── achievements ─────────────────── */
+.wins{
+  display:grid;grid-template-columns:1fr 1fr;gap:0 26px;
+  break-inside:avoid;
+}
+.wins div{
+  display:flex;gap:9px;align-items:flex-start;
+  padding:6.5px 0;border-top:1px solid var(--rule-soft);
+  font-size:9.2pt;line-height:1.42;
+}
+.wins div:nth-child(1),.wins div:nth-child(2){border-top:0}
+.wins .mk{
+  font-family:var(--mono);font-size:7.4pt;color:var(--signal);
+  padding-top:.28em;flex:none;
+}
+@media(max-width:640px){.wins{grid-template-columns:1fr}
+  .wins div:nth-child(2){border-top:1px solid var(--rule-soft)}}
+
+/* ── print ────────────────────────── */
+.print-bar{
+  max-width:8.5in;margin:0 auto;padding:14px 0 0;
+  font-family:var(--mono);font-size:8.5pt;color:var(--soft);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.print-bar a,.print-bar button{
+  font-family:var(--mono);font-size:8.5pt;color:var(--signal);
+  background:none;border:1px solid var(--signal);border-radius:2px;
+  padding:5px 13px;cursor:pointer;text-decoration:none;
+}
+.print-bar a:hover,.print-bar button:hover{background:var(--signal);color:#fff}
+
+@page{size:letter;margin:0.5in}
+@media print{
+  body{background:#fff;font-size:9.7pt}
+  .sheet{box-shadow:none;margin:0;padding:0;max-width:none}
+  .print-bar{display:none}
+  h2{padding-top:13px}
+  .role-block,.wins,li{break-inside:avoid}
+  a{color:inherit}
+  .contact a{border:0}
+}
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <span>Ctrl/&#8984;+P &rarr; Save as PDF</span>
+  <span>
+    <a href="../">&larr; Back to site</a>
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  </span>
+</div>
+
+<div class="sheet">
+
+<div class="mast">
+  <h1>Thayagapriyan Dravidamani</h1>
+  <div class="title-line">
+    <span class="role">Systems Integration Lead</span>
+    <span class="sep">&middot;</span>
+    <span class="yrs">10+ years enterprise integration</span>
+  </div>
+  <div class="contact">
+    <a href="mailto:thayagapriyand@gmail.com">thayagapriyand@gmail.com</a>
+    <a href="https://linkedin.com/in/thayagapriyan">linkedin.com/in/thayagapriyan</a>
+    <a href="https://github.com/thayagapriyan">github.com/thayagapriyan</a>
+  </div>
+</div>
+
+<h2>Technical Skills</h2>
+<dl class="skills">
+  <dt>Platforms</dt>
+  <dd><b>Anypoint Platform</b> (CloudHub 1.0/2.0, RTF, Hybrid), Anypoint MQ, ActiveMQ, RabbitMQ, <b>Kafka</b> (AWS MSK)</dd>
+
+  <dt>Architecture</dt>
+  <dd><b>API-led Connectivity</b>, Event-Driven Architecture, Pub/Sub, Canonical Data Modeling, Microservices</dd>
+
+  <dt>Development</dt>
+  <dd><b>Mule 3 &amp; 4</b>, <b>DataWeave</b>, Core Java, Spring Boot, TypeScript, Groovy, XSLT, XPath</dd>
+
+  <dt>Cloud &amp; DevOps</dt>
+  <dd><b>AWS</b> (S3, SES, MSK), GCP BigQuery, GitHub Actions, Jenkins, Bamboo, Nexus, Docker</dd>
+
+  <dt>APIs &amp; Protocols</dt>
+  <dd>REST, SOAP, HTTP/S, FTP/S, SFTP, SMTP, AMQP, JWT, OAuth 2.0, TLS/mTLS, JSON, XML</dd>
+
+  <dt>Security</dt>
+  <dd><b>OAuth 2.0 / JWT</b>, <b>AWS Signature V4</b>, Salesforce JWT (RSA), TLS, API Policies &amp; Governance</dd>
+
+  <dt>Databases</dt>
+  <dd>MySQL, DB2, Microsoft SQL, Azure DB, H2, Derby</dd>
+
+  <dt>Systems</dt>
+  <dd><b>Salesforce</b>, <b>SAP S4/HANA</b> (SOAP/OData), Hybris, JPMC Payment Services, AS400, 11Ants Analytics</dd>
+</dl>
+
+<h2>Professional Experience</h2>
+
+<div class="role-block">
+  <div class="role-head">
+    <h3>Systems Integration Lead</h3>
+    <span class="dates">Apr 2021 &ndash; Present</span>
+  </div>
+  <p class="org">LTM <span class="loc">&middot; USA</span></p>
+  <p class="summary">Leading integration architecture and delivery for enterprise programs spanning
+  Salesforce, SAP S4/HANA, e-commerce, and developer platform initiatives.</p>
+
+  <h4>API Developer Experience &amp; Governance</h4>
+  <ul>
+    <li>Architected a <b>centralized API catalog</b> integrating MuleSoft API Exchange with a Salesforce
+    Experience Site, exposing interactive Swagger/OpenAPI docs via a custom Lightning Web Component
+    &mdash; boosting developer self-service and cutting API onboarding time.</li>
+    <li>Configured dedicated subdomain and email services for the API portal, establishing a developer
+    engagement platform aligned with enterprise governance standards.</li>
+    <li>Published and customized the <b>API Experience Hub</b> portal, defining the organization-wide
+    API discoverability and documentation standard.</li>
+  </ul>
+
+  <h4>SAP S4/HANA Migration &mdash; MAT Program</h4>
+  <ul>
+    <li>Designed and delivered the integration layer migrating a strategic accounts platform from a
+    legacy on-premise system to <b>SAP S4/HANA</b> &mdash; extracting from TRAX, transforming to a
+    <b>canonical data model</b>, and publishing via OData/SOAP.</li>
+    <li>Deployed all APIs to <b>Runtime Fabric</b> and established Anypoint Monitoring dashboards for
+    real-time SLA visibility and operational governance.</li>
+  </ul>
+
+  <h4>E-Commerce Integration &mdash; Salesforce &amp; Hybris</h4>
+  <ul>
+    <li>Built a full suite of Mule 4 commerce APIs connecting Salesforce and Hybris &mdash;
+    Create/Update/Get Cart, Delivery Options, Promotions, Create &amp; Publish Order &mdash; enabling
+    end-to-end <b>order lifecycle orchestration</b>.</li>
+    <li>Implemented Anypoint MQ for asynchronous decoupling between commerce events, with Salesforce
+    Apex callbacks integrated inside the API layer.</li>
+  </ul>
+
+  <h4>Platform Engineering &amp; Innovation</h4>
+  <ul>
+    <li>Engineered <b>AWS Signature V4</b> signing logic to authenticate against the AWS SES API,
+    establishing the reusable security pattern for all AWS service integrations.</li>
+    <li>Implemented <b>Salesforce JWT authentication</b> with RSA key pairs, replacing fragile
+    credential-based auth and setting the enterprise standard for Salesforce connectivity.</li>
+    <li>Solved a critical pipeline constraint by architecting <b>10MB+ payload streaming over Kafka</b>
+    within Mule, enabling high-volume file delivery without timeouts.</li>
+    <li>Automated Flex Gateway API deployments via <b>GitHub Actions</b>, eliminating manual steps and
+    bringing gateway management under infrastructure-as-code.</li>
+    <li>Built <b>XML SDK and Java SDK custom connectors</b> for centralized logging and transaction
+    tracking, deployed platform-wide for audit and observability.</li>
+    <li>Led the <b>Java 17 runtime migration</b> across Mule applications &mdash; identified
+    compatibility issues, authored the migration runbook, and coordinated remediation across teams.</li>
+    <li>Integrated a Jira connector for automated ticket creation on failed transactions,
+    <b>reducing MTTR</b> by removing manual incident logging.</li>
+    <li>Designed and deployed a <b>Spring Boot / Kafka consumer microservice</b> for real-time invoice
+    status processing, validating event schema and persisting to MySQL.</li>
+    <li>Architected a <b>TypeScript / Hono loyalty gateway</b> exposing five loyalty operations to
+    backend Spring Boot services.</li>
+    <li>Configured Microsoft Outlook 365 via Graph API for LOB notification workflows; connected AWS
+    SES for customer-facing email delivery.</li>
+    <li>Migrated legacy DataMapper (.grf) transformations to <b>DataWeave</b>, modernizing the codebase
+    for Mule 4 compatibility.</li>
+  </ul>
+</div>
+
+<div class="role-block">
+  <div class="role-head">
+    <h3>Senior MuleSoft Developer</h3>
+    <span class="dates">Jul 2018 &ndash; Apr 2021</span>
+  </div>
+  <p class="org">Aspire Systems <span class="loc">&middot; India</span></p>
+  <p class="summary">Delivered integration solutions for warranty, insurance, and financial services
+  clients; progressed from developer to technical lead within the engagement.</p>
+
+  <h4>Enterprise Warranty Integration</h4>
+  <ul>
+    <li>Designed a <b>contract-first SOAP integration</b> aggregating dealer product data from
+    Salesforce and pricing from Big Machines, writing contracts back into SFDC with mandatory field
+    validation and custom exception handling.</li>
+    <li>Built a <b>dynamic PDF generation service</b>: retrieving Salesforce templates, querying Azure
+    DB via optimized stored procedures, generating and merging four distinct PDFs, and persisting all
+    payloads through a logging interceptor for audit compliance.</li>
+    <li>Implemented an <b>asynchronous contract pipeline</b> using ActiveMQ &mdash; acknowledging
+    customers immediately, then processing orders in the background to decouple client-facing latency
+    from backend processing.</li>
+  </ul>
+
+  <h4>Financial Services Integration &mdash; JPMC</h4>
+  <ul>
+    <li>Built an integration to <b>JPMC payment web services</b> for authorization lifecycle
+    management &mdash; create, inquiry and delete operations with error handling and security controls.</li>
+  </ul>
+</div>
+
+<div class="role-block">
+  <div class="role-head">
+    <h3>MuleSoft Developer</h3>
+    <span class="dates">Jun 2015 &ndash; Jul 2018</span>
+  </div>
+  <p class="org">Tata Consultancy Services <span class="loc">&middot; India</span></p>
+  <p class="summary">Built foundational integration expertise across retail, mobility, and loyalty
+  programs; pioneered API-led connectivity adoption within the account.</p>
+
+  <h4>Mobile Commerce Platform</h4>
+  <ul>
+    <li>Implemented a full <b>API-led Connectivity architecture</b> (Experience / Process / System
+    layers) routing all mobile app traffic through Mule &mdash; one of the earliest API-led
+    implementations in the account, and the reference pattern for later projects.</li>
+    <li>Configured Jenkins CI/CD pipelines and Bitbucket repositories, embedding automated build and
+    deployment into the team's delivery workflow.</li>
+  </ul>
+
+  <h4>Retail &amp; Supply Chain</h4>
+  <ul>
+    <li>Built the Supplier Portal integration: an automated <b>Hybris-to-AS400</b> product pipeline via
+    Amazon S3 with Quartz-scheduled Mule pickup, reducing manual supplier data entry.</li>
+    <li>Developed the ANT Analytics pipeline &mdash; queue-driven S3 extraction, business-rule
+    transformation, and automated delivery to the 11Ants Analytics system.</li>
+    <li>Implemented a <b>Loyalty Program API</b> integrating Hybris with the Airpoints NZ backend,
+    validating Airpoints numbers and normalizing responses for Hybris consumption.</li>
+    <li>Built FTP/SFTP transfer automation with Quartz scheduling for cross-system file exchange, and a
+    Java/JQL Jira tool for dynamic effort reporting.</li>
+  </ul>
+</div>
+
+<h2>Key Technical Achievements</h2>
+<div class="wins">
+  <div><span class="mk">&#9679;</span><span>Architected <b>10MB+ Kafka streaming</b> in Mule for high-volume data pipelines</span></div>
+  <div><span class="mk">&#9679;</span><span>Implemented <b>AWS Sig V4 &amp; Salesforce JWT</b> &mdash; reusable security patterns across the platform</span></div>
+  <div><span class="mk">&#9679;</span><span>Automated <b>Flex Gateway deployments</b> via GitHub Actions as infrastructure-as-code</span></div>
+  <div><span class="mk">&#9679;</span><span>Built custom <b>XML &amp; Java SDK connectors</b> for platform-wide audit and observability</span></div>
+  <div><span class="mk">&#9679;</span><span>Led <b>Java 17 migration</b> across Mule apps with a compatibility assessment playbook</span></div>
+  <div><span class="mk">&#9679;</span><span>Reduced <b>MTTR</b> with Jira-integrated automated incident creation</span></div>
+  <div><span class="mk">&#9679;</span><span>Delivered <b>SAP S4/HANA migration</b> integration on a canonical data model</span></div>
+  <div><span class="mk">&#9679;</span><span>Published the self-service <b>API Experience Hub</b> improving developer onboarding</span></div>
+</div>
+
+</div>
+</body>
+</html>
