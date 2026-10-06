@@ -45,7 +45,7 @@
       "when": "2021–present",
       "title": "Systems Integration Lead",
       "org": "LTM · USA",
-      "detail": "I lead integration architecture and delivery for enterprise programs spanning Salesforce, SAP S4/HANA and e-commerce. I designed the integration layer that migrated a strategic accounts platform to SAP S4/HANA, transforming source data into a canonical model before publishing it through OData and SOAP services. I also resolved a critical pipeline constraint by implementing streaming for payloads above 10 MB over Kafka within Mule, and established the platform's reusable security patterns using AWS Signature V4 and Salesforce JWT authentication with RSA key pairs."
+      "detail": "I lead integration architecture and delivery for enterprise programs spanning Salesforce, SAP S4/HANA and e-commerce. I designed the integration layer that migrated a strategic accounts platform to SAP S4/HANA, transforming source data into a canonical model before publishing it through OData and SOAP services. I also resolved a critical pipeline constraint by implementing streaming for payloads above 10 MB over Kafka within Mule, and established the platform's reusable security patterns using AWS Signature V4 and Salesforce JWT authentication with RSA key pairs. On the MuleSoft platform, I architected a dynamic client registration solution with PingFederate and automated API deployments to Omni Gateway with Terraform. On AWS, I built serverless Lambda jobs for data processing and daily reporting, and exposed Spring Boot services through Amazon API Gateway."
     },
     {
       "when": "2018–2021",
