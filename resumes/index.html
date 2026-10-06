@@ -215,7 +215,7 @@ li b{font-weight:500;color:var(--ink)}
   <dd><b>Mule 3 &amp; 4</b>, <b>DataWeave</b>, Core Java, Spring Boot, TypeScript, Groovy, XSLT, XPath</dd>
 
   <dt>Cloud &amp; DevOps</dt>
-  <dd><b>AWS</b> (S3, SES, MSK), GCP BigQuery, GitHub Actions, Jenkins, Bamboo, Nexus, Docker</dd>
+  <dd><b>AWS</b> (Lambda, API Gateway, IAM, VPC, Security Groups, S3, SES, MSK), GCP BigQuery, GitHub Actions, Jenkins, Bamboo, Nexus, Docker</dd>
 
   <dt>APIs &amp; Protocols</dt>
   <dd>REST, SOAP, HTTP/S, FTP/S, SFTP, SMTP, AMQP, JWT, OAuth 2.0, TLS/mTLS, JSON, XML</dd>
@@ -239,61 +239,60 @@ li b{font-weight:500;color:var(--ink)}
   </div>
   <p class="org">LTM <span class="loc">&middot; USA</span></p>
   <p class="summary">Leading integration architecture and delivery for enterprise programs spanning
-  Salesforce, SAP S4/HANA, e-commerce, and developer platform initiatives.</p>
+  Salesforce, SAP S4/HANA, e-commerce, and developer platforms.</p>
 
   <h4>API Developer Experience &amp; Governance</h4>
   <ul>
-    <li>Architected a <b>centralized API catalog</b> integrating MuleSoft API Exchange with a Salesforce
-    Experience Site, exposing interactive Swagger/OpenAPI docs via a custom Lightning Web Component
-    which improved developer self-service and reduced API onboarding time.</li>
-    <li>Configured dedicated subdomain and email services for the API portal, establishing a developer
-    engagement platform aligned with enterprise governance standards.</li>
-    <li>Published and customized the <b>API Experience Hub</b> portal, defining the organization-wide
-    API discoverability and documentation standard.</li>
+    <li>Architected a <b>centralized API catalog</b> linking API Exchange to a Salesforce Experience
+    Site, with Swagger/OpenAPI docs in a custom LWC, cutting API onboarding time.</li>
+    <li>Published the <b>API Experience Hub</b> portal with its own subdomain and email services, setting
+    the org-wide API documentation standard.</li>
   </ul>
 
   <h4>SAP S4/HANA Migration &mdash; MAT Program</h4>
   <ul>
-    <li>Designed and delivered the integration layer that migrated a strategic accounts platform from a
-    legacy on-premise system to <b>SAP S4/HANA</b>, extracting data from TRAX, transforming it into a
-    <b>canonical data model</b>, and publishing it through OData and SOAP services.</li>
-    <li>Deployed all APIs to <b>Runtime Fabric</b> and established Anypoint Monitoring dashboards for
-    real-time SLA visibility and operational governance.</li>
+    <li>Delivered the integration layer migrating a strategic accounts platform to <b>SAP S4/HANA</b>:
+    TRAX data mapped to a <b>canonical model</b> and published via OData and SOAP.</li>
+    <li>Deployed all APIs to <b>Runtime Fabric</b> with Anypoint Monitoring dashboards for SLA visibility.</li>
   </ul>
 
   <h4>E-Commerce Integration &mdash; Salesforce &amp; Hybris</h4>
   <ul>
-    <li>Built a full suite of Mule 4 commerce APIs connecting Salesforce and Hybris &mdash;
-    Create/Update/Get Cart, Delivery Options, Promotions, Create &amp; Publish Order &mdash; enabling
+    <li>Built Mule 4 commerce APIs (cart, delivery, promotions, orders) between Salesforce and Hybris for
     end-to-end <b>order lifecycle orchestration</b>.</li>
-    <li>Implemented Anypoint MQ for asynchronous decoupling between commerce events, with Salesforce
-    Apex callbacks integrated inside the API layer.</li>
+    <li>Decoupled commerce events with Anypoint MQ and Salesforce Apex callbacks.</li>
   </ul>
 
   <h4>Platform Engineering &amp; Innovation</h4>
   <ul>
-    <li>Engineered <b>AWS Signature V4</b> signing logic to authenticate against the AWS SES API,
-    establishing the reusable security pattern for all AWS service integrations.</li>
-    <li>Implemented <b>Salesforce JWT authentication</b> with RSA key pairs, replacing fragile
-    credential-based auth and setting the enterprise standard for Salesforce connectivity.</li>
-    <li>Resolved a critical pipeline constraint by implementing <b>streaming for payloads above 10 MB
-    over Kafka</b> within Mule, which enabled high-volume file delivery without timeouts.</li>
-    <li>Automated Flex Gateway API deployments via <b>GitHub Actions</b>, eliminating manual steps and
-    bringing gateway management under infrastructure-as-code.</li>
-    <li>Built <b>XML SDK and Java SDK custom connectors</b> for centralized logging and transaction
-    tracking, deployed platform-wide for audit and observability.</li>
-    <li>Led the <b>Java 17 runtime migration</b> across Mule applications &mdash; identified
-    compatibility issues, authored the migration runbook, and coordinated remediation across teams.</li>
-    <li>Integrated a Jira connector for automated ticket creation on failed transactions,
-    <b>reducing MTTR</b> by removing manual incident logging.</li>
-    <li>Designed and deployed a <b>Spring Boot / Kafka consumer microservice</b> for real-time invoice
-    status processing, validating event schema and persisting to MySQL.</li>
-    <li>Architected a <b>TypeScript / Hono loyalty gateway</b> exposing five loyalty operations to
-    backend Spring Boot services.</li>
-    <li>Configured Microsoft Outlook 365 via Graph API for LOB notification workflows; connected AWS
-    SES for customer-facing email delivery.</li>
-    <li>Migrated legacy DataMapper (.grf) transformations to <b>DataWeave</b>, modernizing the codebase
-    for Mule 4 compatibility.</li>
+    <li>Built <b>AWS Signature V4</b> signing for AWS SES, the reusable pattern for all AWS integrations.</li>
+    <li>Implemented <b>Salesforce JWT auth</b> with RSA key pairs, the enterprise standard for Salesforce.</li>
+    <li>Implemented <b>Kafka streaming for 10 MB+ payloads</b> in Mule, removing delivery timeouts.</li>
+    <li>Automated Flex Gateway deployments via <b>GitHub Actions</b> as infrastructure-as-code.</li>
+    <li>Built <b>XML/Java SDK custom connectors</b> for platform-wide logging and transaction tracking.</li>
+    <li>Led the <b>Java 17 migration</b> across Mule apps, authoring the runbook and coordinating fixes.</li>
+    <li>Automated Jira tickets on failed transactions, <b>reducing MTTR</b>.</li>
+    <li>Built a <b>Spring Boot / Kafka consumer</b> for real-time invoice status, persisting to MySQL.</li>
+    <li>Architected a <b>TypeScript / Hono loyalty gateway</b> fronting Spring Boot services.</li>
+    <li>Wired Outlook 365 (Graph API) and AWS SES for business and customer notifications.</li>
+    <li>Migrated legacy DataMapper transformations to <b>DataWeave</b> for Mule 4.</li>
+  </ul>
+
+  <h4>MuleSoft Platform</h4>
+  <ul>
+    <li>Built <b>Terraform IaC</b> to deploy and configure APIs on <b>MuleSoft Omni Gateway</b>, giving
+    consistent, repeatable deployments across environments.</li>
+    <li>Applied MuleSoft API management and gateway capabilities for secure API exposure in platform
+    modernization.</li>
+  </ul>
+
+  <h4>AWS / Cloud Engineering</h4>
+  <ul>
+    <li>Built <b>serverless AWS Lambda</b> jobs for MySQL data processing, status updates and daily email
+    reports.</li>
+    <li>Fronted existing Spring Boot services with <b>Amazon API Gateway</b> for secure, scalable access.</li>
+    <li>Improved <b>CI/CD and deployment processes</b> in platform modernization work, speeding releases.</li>
+    <li>Managed <b>IAM roles and permissions</b> and service-to-service access across AWS workloads.</li>
   </ul>
 </div>
 
