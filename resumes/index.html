@@ -81,7 +81,8 @@ h2::after{content:"";flex:1;height:1px;background:var(--rule)}
 .skills b{font-weight:500;color:var(--ink)}
 
 /* ── experience ───────────────────── */
-.role-block{margin-bottom:17px;break-inside:avoid}
+.role-block{margin-bottom:17px}
+h2,h3,h4,.role-head,.org,.summary{break-after:avoid}
 .role-head{
   display:flex;justify-content:space-between;align-items:baseline;
   gap:14px;flex-wrap:wrap;margin-bottom:1px;
@@ -168,7 +169,7 @@ li b{font-weight:500;color:var(--ink)}
   .skills dt{padding-right:12px;font-size:7.4pt}
   .skills dd{font-size:8.5pt}
   .wins div{padding:4px 0;font-size:8.4pt}
-  .role-block,.wins,li{break-inside:avoid}
+  .wins,li{break-inside:avoid}
   a{color:inherit}
   .contact a{border:0}
 }
