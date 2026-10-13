@@ -305,19 +305,16 @@ h2{
 
 /* experience */
 .tl{display:flex;flex-direction:column}
-.role{display:grid;grid-template-columns:96px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.role{padding:22px 0;border-bottom:1px solid var(--line)}
 .role:last-child{border-bottom:0}
+.role-head{display:flex;justify-content:space-between;align-items:baseline;gap:4px 16px;flex-wrap:wrap}
 .role .when{
   font-family:var(--mono);font-size:11.5px;color:var(--dim);
-  padding-top:.35em;font-variant-numeric:tabular-nums;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
 }
 .role h3{margin:0 0 3px;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
 .role .org{font-family:var(--mono);font-size:12px;color:var(--signal);margin:0 0 9px}
 .role p:not(.org){margin:0;color:var(--muted);font-size:.96rem;max-width:85ch}
-@media(max-width:620px){
-  .role{grid-template-columns:1fr;gap:8px}
-  .role .when{padding-top:0}
-}
 
 /* work */
 .work{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;border-top:1px solid var(--line)}
@@ -519,10 +516,10 @@ document.getElementById("y").textContent = new Date().getFullYear();
     experience: function (rows) {
       return rows.map(function (r) {
         return '<div class="role">' +
-          '<div class="when">' + esc(r.when) + '</div>' +
-          '<div><h3>' + esc(r.title) + '</h3>' +
+          '<div class="role-head"><h3>' + esc(r.title) + '</h3>' +
+          '<span class="when">' + esc(r.when) + '</span></div>' +
           '<p class="org">' + esc(r.org) + '</p>' +
-          '<p>' + r.detail + '</p></div></div>';
+          '<p>' + r.detail + '</p></div>';
       }).join("");
     },
     work: function (rows) {
