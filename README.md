@@ -33,8 +33,8 @@ Two independent controls:
   `data-mode`.
 
 Both persist in `localStorage`. Professional/light is what a first-time
-visitor sees. The village illustration and kolam dividers only appear in
-the Village palette. To change a palette's colors, edit its block near the
+visitor sees. Palettes change type and shape too: Village uses a serif
+with rounded buttons, Terminal uses monospace headings. To change a palette's colors, edit its block near the
 top of the `<style>` in `index.html`.
 
 ### What is NOT in data.json
@@ -42,7 +42,6 @@ top of the `<style>` in `index.html`.
 These are in `index.html` directly, because they're one-offs:
 
 - Your name, headline and intro paragraph — near the top, in `<header>`
-- The pipeline diagram — search for `<svg` in the `.pipe` block
 - All styling — the `<style>` block; colors are the `--variables` at the very top
 
 ## Running it locally
