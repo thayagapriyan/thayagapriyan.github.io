@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Thayagapriyan Dravidamani — Résumé</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="description" content="Systems Integration Lead · 10+ years enterprise integration · MuleSoft, Salesforce, SAP S4/HANA, Kafka.">
 <style>
 /* fonts embedded so the page renders identically offline and in PDF export */
@@ -269,7 +270,7 @@ li b{font-weight:500;color:var(--ink)}
     <li>Implemented <b>Salesforce JWT auth</b> with RSA key pairs, the enterprise standard for Salesforce.</li>
     <li>Implemented <b>Kafka streaming for 10 MB+ payloads</b> in Mule, removing delivery timeouts.</li>
     <li>Automated Flex Gateway deployments via <b>GitHub Actions</b> as infrastructure-as-code.</li>
-    <li>Built <b>XML/Java SDK custom connectors</b> for platform-wide logging and transaction tracking.</li>
+    <li>Built <b>XML/Java SDK custom connectors</b> for platform-wide logging.</li>
     <li>Led the <b>Java 17 migration</b> across Mule apps, authoring the runbook and coordinating fixes.</li>
     <li>Automated Jira tickets on failed transactions, <b>reducing MTTR</b>.</li>
     <li>Built a <b>Spring Boot / Kafka consumer</b> for real-time invoice status, persisting to MySQL.</li>
@@ -284,8 +285,13 @@ li b{font-weight:500;color:var(--ink)}
     <b>PingFederate</b>, automating API client onboarding and identity management.</li>
     <li>Built <b>Terraform IaC</b> to deploy and configure APIs on <b>MuleSoft Omni Gateway</b>, giving
     consistent, repeatable deployments across environments.</li>
-    <li>Applied MuleSoft API management and gateway capabilities for secure API exposure in platform
-    modernization.</li>
+    <li>Built a <b>Rust PDK policy</b> for Flex/Omni Gateway that adds or overrides query parameters on
+    inbound requests, with no backend code changes.</li>
+    <li>Published a reusable <b>Mule tracking connector</b> to Exchange, writing batch and item records to
+    MySQL in sync (direct insert) or async (Kafka) mode; the standard tracking for several Mule APIs.</li>
+    <li>Built a <b>custom aggregator</b> replacing Mule Aggregators on CloudHub 2.0 (no in-memory object
+    store): group- and time-based, persisted in MySQL, with a scheduler releasing complete or timed-out
+    groups to Kafka using retries and correlation IDs.</li>
   </ul>
 
   <h4>AWS / Cloud Engineering</h4>
@@ -362,8 +368,6 @@ li b{font-weight:500;color:var(--ink)}
 <div class="wins">
   <div><span class="mk">&#9679;</span><span>Architected <b>10MB+ Kafka streaming</b> in Mule for high-volume data pipelines</span></div>
   <div><span class="mk">&#9679;</span><span>Implemented <b>AWS Sig V4 &amp; Salesforce JWT</b> &mdash; reusable security patterns across the platform</span></div>
-  <div><span class="mk">&#9679;</span><span>Automated <b>Flex Gateway deployments</b> via GitHub Actions as infrastructure-as-code</span></div>
-  <div><span class="mk">&#9679;</span><span>Built custom <b>XML &amp; Java SDK connectors</b> for platform-wide audit and observability</span></div>
   <div><span class="mk">&#9679;</span><span>Led <b>Java 17 migration</b> across Mule apps with a compatibility assessment playbook</span></div>
   <div><span class="mk">&#9679;</span><span>Reduced <b>MTTR</b> with Jira-integrated automated incident creation</span></div>
   <div><span class="mk">&#9679;</span><span>Delivered <b>SAP S4/HANA migration</b> integration on a canonical data model</span></div>
