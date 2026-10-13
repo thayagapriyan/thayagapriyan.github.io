@@ -8,7 +8,7 @@
 <meta name="description" content="Integration engineer building API platforms and AI agent systems on AWS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=Source+Serif+4:opsz,wght@8..60,300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
 /* ── themes ────────────────────────────────────────────────
    Two independent axes:
@@ -25,7 +25,7 @@
   --void:#f8f9fa; --panel:#fff; --raised:#eef1f4;
   --line:#e3e7ec; --line-lit:#c3ccd6;
   --fg:#15202b; --muted:#4a5764; --dim:#7d8b99;
-  --signal:#1c5d99; --warm:#a8552b; --turmeric:#b8863b;
+  --signal:#1c5d99; --warm:#a8552b;
   --glow:rgba(28,93,153,.06);
   --grid:rgba(60,90,120,.045);
 }
@@ -33,7 +33,7 @@
   --void:#0d1117; --panel:#151b23; --raised:#1d252f;
   --line:#232c38; --line-lit:#36424f;
   --fg:#e8edf3; --muted:#9dabb9; --dim:#6b7885;
-  --signal:#5aa9e6; --warm:#e08b5c; --turmeric:#d4a95e;
+  --signal:#5aa9e6; --warm:#e08b5c;
   --glow:rgba(90,169,230,.07);
   --grid:rgba(140,170,200,.05);
 }
@@ -43,7 +43,7 @@
   --void:#f6efe2; --panel:#fffdf9; --raised:#efe4d1;
   --line:#e2d5be; --line-lit:#c6b092;
   --fg:#23190f; --muted:#5a4a38; --dim:#8b7658;
-  --signal:#1d6b45; --warm:#b6441c; --turmeric:#cf9414;
+  --signal:#1d6b45; --warm:#b6441c;
   --glow:rgba(29,107,69,.07);
   --grid:rgba(122,96,58,.05);
 }
@@ -52,7 +52,7 @@
   --void:#171009; --panel:#1e160d; --raised:#2a1f13;
   --line:#332616; --line-lit:#4d3a22;
   --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
-  --signal:#6fc39a; --warm:#f08a55; --turmeric:#e8b53f;
+  --signal:#6fc39a; --warm:#f08a55;
   --glow:rgba(111,195,154,.07);
   --grid:rgba(200,170,120,.05);
 }
@@ -62,7 +62,7 @@
   --void:#fbfcfb; --panel:#fff; --raised:#f1f5f4;
   --line:#e2e8e6; --line-lit:#c8d4d1;
   --fg:#101617; --muted:#4e5c5e; --dim:#7c8a8c;
-  --signal:#00786e; --warm:#c04a22; --turmeric:#b08814;
+  --signal:#00786e; --warm:#c04a22;
   --glow:rgba(0,120,110,.05);
   --grid:rgba(16,60,58,.045);
 }
@@ -71,7 +71,7 @@
   --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
   --line:#1f272a; --line-lit:#2c383c;
   --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
-  --signal:#2ff5e0; --warm:#ff7a45; --turmeric:#e8c33f;
+  --signal:#2ff5e0; --warm:#ff7a45;
   --glow:rgba(47,245,224,.055);
   --grid:rgba(120,160,158,.07);
 }
@@ -82,7 +82,7 @@
     --void:#0d1117; --panel:#151b23; --raised:#1d252f;
     --line:#232c38; --line-lit:#36424f;
     --fg:#e8edf3; --muted:#9dabb9; --dim:#6b7885;
-    --signal:#5aa9e6; --warm:#e08b5c; --turmeric:#d4a95e;
+    --signal:#5aa9e6; --warm:#e08b5c;
     --glow:rgba(90,169,230,.07);
     --grid:rgba(140,170,200,.05);
   }
@@ -90,7 +90,7 @@
     --void:#171009; --panel:#1e160d; --raised:#2a1f13;
     --line:#332616; --line-lit:#4d3a22;
     --fg:#f4ead9; --muted:#bda887; --dim:#8b7658;
-    --signal:#6fc39a; --warm:#f08a55; --turmeric:#e8b53f;
+    --signal:#6fc39a; --warm:#f08a55;
     --glow:rgba(111,195,154,.07);
     --grid:rgba(200,170,120,.05);
   }
@@ -98,7 +98,7 @@
     --void:#080b0c; --panel:#0e1214; --raised:#161c1f;
     --line:#1f272a; --line-lit:#2c383c;
     --fg:#e6ecec; --muted:#7d8b8e; --dim:#55635f;
-    --signal:#2ff5e0; --warm:#ff7a45; --turmeric:#e8c33f;
+    --signal:#2ff5e0; --warm:#ff7a45;
     --glow:rgba(47,245,224,.055);
     --grid:rgba(120,160,158,.07);
   }
@@ -260,36 +260,32 @@ h1 .sub{display:block;margin-top:.3em;font-size:.5em;color:var(--muted);font-wei
   border:1px solid var(--line-lit);background:var(--panel);padding:14px 16px;margin:0;
 }
 
-/* village scene — drawn line-work, sits under the hero */
-.village{margin:14px 0 0;pointer-events:none;display:none}
-[data-palette="village"] .village{display:block}
-.village svg{display:block;width:100%;height:auto;max-height:150px;overflow:visible}
-.village path,.village rect{
-  fill:none;stroke-linecap:round;stroke-linejoin:round;
-  transition:stroke .45s,fill .45s;
-}
-.v-far path{stroke:var(--signal);stroke-width:1.3;opacity:.5;fill:var(--signal);fill-opacity:.1}
-.v-far path:first-child,.v-far path:nth-child(7){stroke:var(--warm);fill:none;stroke-width:1.9;opacity:.6}
-.village .trunk{stroke:var(--warm);stroke-width:2.2;opacity:.75}
-.village .leaf{
-  stroke:var(--signal);stroke-width:1.5;
-  fill:var(--signal);fill-opacity:.13;
-}
-.village .roof{stroke:var(--warm);stroke-width:2;fill:var(--warm);fill-opacity:.2}
-.village .roof-line{stroke:var(--warm);stroke-width:.9;opacity:.5}
-.village .wall{stroke:var(--line-lit);stroke-width:1.7;fill:var(--raised);fill-opacity:.6}
-.village .door{stroke:var(--warm);stroke-width:1.5;fill:var(--warm);fill-opacity:.16}
-.village .kolam-dot{stroke:var(--turmeric);stroke-width:3;stroke-linecap:round;opacity:.85}
-.v-ground{stroke:var(--line-lit);stroke-width:1.4;opacity:.8}
-@media(max-width:640px){.village svg{max-height:104px}}
+/* ── per-theme type & shape — palettes differ in more than colour ── */
+/* village: warm serif, soft pill shapes */
+[data-palette="village"]{--sans:"Source Serif 4",Georgia,serif}
+[data-palette="village"] h1{letter-spacing:-.02em;font-weight:600}
+[data-palette="village"] h1 .sub{font-style:italic}
+[data-palette="village"] .role h3{font-size:1.15rem}
+[data-palette="village"] .links a,
+[data-palette="village"] .ident span,
+[data-palette="village"] .layer dd span{border-radius:999px}
+[data-palette="village"] .links a{padding:10px 22px}
 
-/* kolam divider — the dot lattice drawn at thresholds */
-section{position:relative}
-[data-palette="village"] section::before{
-  content:"";position:absolute;top:-6px;left:0;width:156px;height:12px;
-  background-image:radial-gradient(circle,var(--turmeric) 1.7px,transparent 1.8px);
-  background-size:16px 12px;opacity:.7;
+/* terminal: monospace headings, hard corners, a live cursor */
+[data-palette="tech"] h1,
+[data-palette="tech"] .role h3{font-family:var(--mono);letter-spacing:-.04em}
+[data-palette="tech"] h1{font-weight:700;font-size:clamp(1.8rem,4.8vw,2.6rem)}
+[data-palette="tech"] h1 .sub{font-size:.55em;color:var(--signal)}
+[data-palette="tech"] h1 .sub::before{content:"$ ";color:var(--dim)}
+[data-palette="tech"] h1 .sub::after{
+  content:"";display:inline-block;width:.55em;height:1.05em;margin-left:.2em;
+  vertical-align:-.15em;background:var(--signal);animation:blink 1.1s steps(1) infinite;
 }
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){[data-palette="tech"] h1 .sub::after{animation:none}}
+[data-palette="tech"] .links a,
+[data-palette="tech"] .ident span{border-radius:0}
+[data-palette="tech"] body{font-weight:400}
 
 /* sections */
 section{padding:60px 0;border-top:1px solid var(--line)}
@@ -429,57 +425,6 @@ footer a:hover{color:var(--signal)}
     <a href="resumes/Thayagapriyan_Dravidamani_Integration_Lead_Resume.docx" download>Word</a>
   </p>
 </header>
-
-<div class="village" aria-hidden="true">
-  <svg viewBox="0 0 1000 150" preserveAspectRatio="xMidYMax meet">
-    <!-- distant coconut palms -->
-    <g class="v-far">
-      <path d="M118 150 V78"/>
-      <path d="M118 78 c-20-10-36-6-44 6 c15-5 30-4 44 1z"/>
-      <path d="M118 78 c20-10 36-6 44 6 c-15-5-30-4-44 1z"/>
-      <path d="M118 78 c-11-18-8-31 3-38 c5 15 4 27-3 38z"/>
-      <path d="M118 78 c-26-3-44 4-52 16 c17-9 34-13 52-11z"/>
-      <path d="M118 78 c26-3 44 4 52 16 c-17-9-34-13-52-11z"/>
-
-      <path d="M876 150 V70"/>
-      <path d="M876 70 c-21-11-38-6-46 7 c16-6 31-5 46 1z"/>
-      <path d="M876 70 c21-11 38-6 46 7 c-16-6-31-5-46 1z"/>
-      <path d="M876 70 c-12-19-8-33 3-40 c6 16 5 29-3 40z"/>
-      <path d="M876 70 c-27-3-46 5-54 17 c18-9 36-14 54-12z"/>
-      <path d="M876 70 c27-3 46 5 54 17 c-18-9-36-14-54-12z"/>
-    </g>
-
-    <!-- the house: tiled roof, mud walls, one door -->
-    <g class="v-house">
-      <path class="roof" d="M392 92 L470 58 L548 92 Z"/>
-      <path class="roof-line" d="M406 92 L470 64 M424 92 L470 72 M516 92 L470 64 M498 92 L470 72"/>
-      <rect class="wall" x="404" y="92" width="132" height="58"/>
-      <rect class="door" x="452" y="112" width="26" height="38"/>
-      <path class="kolam-dot" d="M420 132 h0 M432 132 h0 M420 142 h0 M432 142 h0"/>
-    </g>
-
-    <!-- banana trees: broad split leaves, the village's signature -->
-    <g class="v-banana">
-      <path class="trunk" d="M628 150 V92"/>
-      <path class="leaf" d="M628 96 c-30-4-48-16-56-32 c22 2 42 12 56 26z"/>
-      <path class="leaf" d="M628 96 c30-4 48-16 56-32 c-22 2-42 12-56 26z"/>
-      <path class="leaf" d="M628 100 c-26 4-42 16-48 32 c19-6 36-18 48-30z"/>
-      <path class="leaf" d="M628 100 c26 4 42 16 48 32 c-19-6-36-18-48-30z"/>
-      <path class="leaf" d="M628 92 c-6-20-2-34 8-42 c4 16 2 30-8 42z"/>
-
-      <path class="trunk" d="M700 150 V104"/>
-      <path class="leaf" d="M700 108 c-24-3-38-13-44-26 c17 2 33 10 44 21z"/>
-      <path class="leaf" d="M700 108 c24-3 38-13 44-26 c-17 2-33 10-44 21z"/>
-      <path class="leaf" d="M700 112 c-21 3-34 13-38 26 c15-5 29-15 38-24z"/>
-      <path class="leaf" d="M700 104 c-5-16-1-27 6-33 c3 13 2 24-6 33z"/>
-    </g>
-
-    <!-- ground -->
-    <path class="v-ground" d="M0 150 H1000"/>
-  </svg>
-</div>
-
-
 
 <section id="experience">
   <div class="sec-head"><h2>Experience</h2><span class="stage">Track record</span></div>
