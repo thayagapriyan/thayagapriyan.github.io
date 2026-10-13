@@ -8,7 +8,7 @@ Résumé lives here in three formats, all published:
 To regenerate the PDF after editing index.html:
 
   chrome --headless --disable-gpu --no-pdf-header-footer \
-    --print-to-pdf="resumes/Thayagapriyan-Dravidamani-Resume.pdf" \
+    --print-to-pdf="resumes/Thayagapriyan_Dravidamani_Integration_Lead_Resume.pdf" \
     "file:///<abs-path>/resumes/index.html"
 
 The .docx is maintained separately — edit it in Word directly.
