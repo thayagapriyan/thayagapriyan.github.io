@@ -12,7 +12,7 @@ Plain HTML/CSS/JS. No build step, no dependencies, no package.json. Keep it that
 | `favicon.svg` | Serif "T" monogram, linked from both pages |
 | `resumes/index.html` | Web résumé; source of the PDF. Fonts are inlined as base64, so lines are huge: grep or read by line range |
 | `resumes/*.pdf` | Generated from `resumes/index.html`. Never edit directly |
-| `resumes/*.docx` | ATS version, maintained by hand in Word. Agents can't update it; tell the user when it falls out of sync |
+| `resumes/*.docx` | ATS version. Agents keep it in sync with `resumes/index.html` (edit `word/document.xml` with the `docx` skill); the user does not edit it by hand. It runs 3 pages, which is expected |
 
 ## Rules
 
