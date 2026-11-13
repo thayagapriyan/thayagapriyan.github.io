@@ -12,11 +12,11 @@ Plain HTML/CSS/JS. No build step, no dependencies, no package.json. Keep it that
 | `favicon.svg` | Serif "T" monogram, linked from both pages |
 | `resumes/index.html` | Web résumé; source of the PDF. Fonts are inlined as base64, so lines are huge: grep or read by line range |
 | `resumes/*.pdf` | Generated from `resumes/index.html`. Never edit directly |
-| `resumes/*.docx` | ATS version. Agents keep it in sync with `resumes/index.html` (edit `word/document.xml` with the `docx` skill); the user does not edit it by hand. It runs 3 pages, which is expected |
+| `resumes/*.docx` | ATS version: same content, single column, one page. Generated from `resumes/index.html` by `.claude/skills/resume-pdf/docx.py` (it omits Key Achievements, which repeats the experience bullets). Never edit by hand |
 
 ## Rules
 
-- **Résumé is exactly two pages.** After editing `resumes/index.html`, use the `resume-pdf` skill (`.claude/skills/resume-pdf/`).
+- **Résumé is exactly one page**, two columns (experience | skills & achievements). After editing `resumes/index.html`, use the `resume-pdf` skill (`.claude/skills/resume-pdf/`).
 - **Résumé files are named** `Thayagapriyan_Dravidamani_Integration_Lead_Resume.{pdf,docx}`. Several pages link to them by name (`index.html`, `data.json`, `resumes/index.html`, `resumes/README.md`). If you rename them, update every link in the same change.
 - **Content edits go in `data.json`** where possible. Descriptions allow `<strong>`; everything else is escaped. In `stack`, a trailing `*` marks a primary skill.
 - **Themes** are two independent attributes on `<html>`: `data-palette` (`pro` | `village` | `tech`) and `data-mode` (`light` | `dark`). Palettes differ in colour **and** type/shape (Village = Source Serif + pill shapes; Terminal = mono headings, square corners, cursor). Decorative illustrations or diagrams are not wanted; the user removed them.

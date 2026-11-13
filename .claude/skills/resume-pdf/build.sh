@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regenerate the résumé PDF from resumes/index.html; fail unless it is exactly 2 pages.
+# Regenerate the résumé PDF from resumes/index.html; fail unless it is exactly 1 page.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
@@ -15,4 +15,4 @@ ROOT=$(winpath "$PWD")
 
 pages=$("$PY" -c "import re,sys;print(len(re.findall(rb'/Type\s*/Page[^s]',open(sys.argv[1],'rb').read())))" "$PDF")
 echo "$PDF: $pages page(s)"
-[ "$pages" -eq 2 ] || { echo "FAIL: résumé must be exactly 2 pages" >&2; exit 1; }
+[ "$pages" -eq 1 ] || { echo "FAIL: résumé must be exactly 1 page" >&2; exit 1; }
